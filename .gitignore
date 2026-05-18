@@ -1,0 +1,44 @@
+# Xcode
+build/
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+xcuserdata/
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+*.xcscmblueprint
+
+# Swift Package Manager
+.build/
+Packages/
+Package.pins
+Package.resolved
+*.xcodeproj
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+Carthage/Checkouts/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# IDEs
+*.swp
+*.swo
+*~
+.idea/
+
+# Misc
+*.log
+*.tmp
+.env
+.env.local

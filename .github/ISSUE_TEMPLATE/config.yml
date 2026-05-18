@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 讨论区
+    url: https://github.com/wangjianqi/AppStore/discussions
+    about: 使用 Discussions 进行一般性讨论
