@@ -17,7 +17,7 @@
 
 ## 📖 简介
 
-**AppStore-Guide** 是一份面向零基础小白的 iOS 开发完整教程，手把手带你从"不知道 Xcode 是什么"到"成功上架 App Store"。整个教程涵盖 **9 大篇 57 章 + 7 个附录**，从环境搭建、语言学习、UI 开发到上架审核、增长变现，形成一条完整的闭环路径。
+**AppStore-Guide** 是一份面向零基础小白的 iOS 开发完整教程，手把手带你从"不知道 Xcode 是什么"到"成功上架 App Store"。整个教程涵盖 **10 大篇 71 章 + 9 个附录**，从环境搭建、语言学习、UI 开发到上架审核、增长变现、visionOS 探索，形成一条完整的闭环路径。
 
 这不是一份枯燥的技术文档堆砌。本教程全程采用 **AI 驱动开发** 模式——你将学会如何借助 Claude Code、Copilot、Cursor、Trae 等 AI 工具大幅提升开发效率，用 **MCP 协议** 让 AI 直接操作你的工具链，用 **Spec 驱动开发** 方法论让 AI 真正成为你的编程搭档，而不是简单的代码补全工具。
 
@@ -27,7 +27,7 @@
 
 ## ✨ 特色亮点
 
-- 📚 **9 大篇 57 章 + 7 个附录**：从环境准备到增长变现，覆盖 iOS 开发上架全链路
+- 📚 **10 大篇 71 章 + 9 个附录**：从环境准备到增长变现到 visionOS，覆盖 iOS 开发全链路
 - 🤖 **AI 驱动开发**：Claude Code / Copilot / Cursor / Trae 全流程实战，让 AI 成为你的编程搭档
 - 🔌 **MCP 协议集成**：让 AI 直接操作 Figma、GitHub、数据库等工具，打通全链路
 - 📝 **Spec 驱动开发**：AI 时代的最佳开发实践，用规范驱动高效产出
@@ -103,6 +103,13 @@
 | 32 | [推送通知](05-SwiftUI进阶/32-推送通知.md) |
 | 33 | [WidgetKit 小组件](05-SwiftUI进阶/33-WidgetKit小组件.md) |
 | 34 | [实战②：完成「天气 App」](05-SwiftUI进阶/34-实战天气App.md) |
+| 58 | [SwiftData 现代数据框架](05-SwiftUI进阶/58-SwiftData现代数据框架.md) |
+| 59 | [@Observable 与 Observation 框架](05-SwiftUI进阶/59-Observable与Observation框架.md) |
+| 60 | [Live Activities 与灵动岛](05-SwiftUI进阶/60-Live-Activities与灵动岛.md) |
+| 61 | [地图与定位](05-SwiftUI进阶/61-地图与定位.md) |
+| 62 | [App Intents 与 Siri 快捷指令](05-SwiftUI进阶/62-App-Intents与Siri快捷指令.md) |
+| 63 | [相册与相机](05-SwiftUI进阶/63-相册与相机.md) |
+| 64 | [Swift Testing 新测试框架](05-SwiftUI进阶/64-Swift-Testing新测试框架.md) |
 
 ### 第六篇：项目实战 — 开发你的上架 App
 
@@ -117,6 +124,8 @@
 | 41 | [测试基础](06-项目实战/41-测试基础.md) |
 | 42 | [无障碍与国际化](06-项目实战/42-无障碍与国际化.md) |
 | 43 | [打磨细节：体验优化](06-项目实战/43-打磨细节体验优化.md) |
+| 65 | [Xcode Cloud CI/CD](06-项目实战/65-Xcode-Cloud-CI-CD.md) |
+| 66 | [TipKit 引导与新手教学](06-项目实战/66-TipKit引导与新手教学.md) |
 
 ### 第七篇：上架准备 — 国内 + 国际双线并行
 
