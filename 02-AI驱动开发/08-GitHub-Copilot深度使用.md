@@ -1,4 +1,4 @@
-# 08 - GitHub Copilot 深度使用
+# 08-GitHub Copilot 深度使用
 
 ## 本章目标
 
