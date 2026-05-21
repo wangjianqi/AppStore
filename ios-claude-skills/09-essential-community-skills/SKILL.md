@@ -156,6 +156,10 @@ description: 安装、配置、推荐社区 Claude Code Skills，或需要 xcode
 
 ## 六、后端搭建（BaaS / Serverless / 自建）
 
+> 💡 后端编码规范（Supabase RLS / Vapor 控制器 / Cloudflare Workers / 数据库设计 / 认证流程等）已独立为 **`10-backend-server`** Skill，开发后端时请同时启用。
+
+以下为社区可安装的后端相关 Skills：
+
 ### 11. Supabase Agent Skills（官方出品 ⭐ 必装）
 
 - **仓库**：https://github.com/supabase/agent-skills

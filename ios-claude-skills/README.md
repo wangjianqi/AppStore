@@ -1,6 +1,6 @@
 # iOS Claude Code Skills 工具包
 
-> 9 个 SKILL.md 文件，开箱即用，覆盖独立 iOS 开发者的核心场景。
+> 10 个 SKILL.md 文件，开箱即用，覆盖独立 iOS 开发者的核心场景。
 
 ---
 
@@ -39,6 +39,7 @@ cp -r ios-claude-skills/* ~/.claude/skills/
 | 07 | localization | 中英文本地化、文案规范 |
 | 08 | subscription-paywall | IAP、StoreKit 2、Paywall 页面 |
 | 09 | essential-community-skills | 社区必备 Skill 安装推荐、xcodebuild、SwiftUI Pro、设备参数、HIG、后端搭建（Supabase/Firebase/Vapor/Cloudflare Workers）、认证安全 |
+| 10 | backend-server | 后端搭建、API 开发、数据库设计、Supabase、Vapor、Cloudflare Workers、认证、BaaS、Serverless |
 
 ---
 
@@ -58,6 +59,7 @@ description: Claude Code 识别触发条件（越具体越好）
 - `05-project-architecture`：修改为你的实际目录结构和命名习惯
 - `06-network-api`：修改后端地址、认证方式、响应格式
 - `08-subscription-paywall`：修改为你的实际产品 ID
+- `10-backend-server`：修改为你选用的后端方案（Supabase / Vapor / Cloudflare Workers / Firebase）
 
 **踩到新坑就更新对应 Skill**，文件会越用越准。
 
