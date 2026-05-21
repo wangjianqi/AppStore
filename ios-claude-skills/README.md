@@ -1,6 +1,6 @@
 # iOS Claude Code Skills 工具包
 
-> 8 个 SKILL.md 文件，开箱即用，覆盖独立 iOS 开发者的核心场景。
+> 9 个 SKILL.md 文件，开箱即用，覆盖独立 iOS 开发者的核心场景。
 
 ---
 
@@ -38,6 +38,7 @@ cp -r ios-claude-skills/* ~/.claude/skills/
 | 06 | network-api | 网络请求、API、后端对接 |
 | 07 | localization | 中英文本地化、文案规范 |
 | 08 | subscription-paywall | IAP、StoreKit 2、Paywall 页面 |
+| 09 | essential-community-skills | 社区必备 Skill 安装推荐、xcodebuild、SwiftUI Pro、设备参数、HIG |
 
 ---
 
