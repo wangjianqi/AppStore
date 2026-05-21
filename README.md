@@ -17,7 +17,7 @@
 
 ## 📖 简介
 
-**AppStore-Guide** 是一份面向零基础小白的 iOS 开发完整教程，手把手带你从"不知道 Xcode 是什么"到"成功上架 App Store"。整个教程涵盖 **10 大篇 83 章 + 9 个附录**，从环境搭建、语言学习、UI 开发到上架审核、增长变现、visionOS 探索，形成一条完整的闭环路径。
+**AppStore-Guide** 是一份面向零基础小白的 iOS 开发完整教程，手把手带你从"不知道 Xcode 是什么"到"成功上架 App Store"。整个教程涵盖 **10 大篇 101 章 + 9 个附录**，从环境搭建、语言学习、UI 开发到上架审核、增长变现、多平台开发，形成一条完整的闭环路径。
 
 这不是一份枯燥的技术文档堆砌。本教程全程采用 **AI 驱动开发** 模式——你将学会如何借助 Claude Code、Copilot、Cursor、Trae 等 AI 工具大幅提升开发效率，用 **MCP 协议** 让 AI 直接操作你的工具链，用 **Spec 驱动开发** 方法论让 AI 真正成为你的编程搭档，而不是简单的代码补全工具。
 
@@ -27,7 +27,7 @@
 
 ## ✨ 特色亮点
 
-- 📚 **10 大篇 83 章 + 9 个附录**：从环境准备到增长变现到 visionOS，覆盖 iOS 开发全链路
+- 📚 **10 大篇 101 章 + 9 个附录**：从环境准备到增长变现到多平台开发，覆盖 iOS 开发全链路
 - 🤖 **AI 驱动开发**：Claude Code / Copilot / Cursor / Trae 全流程实战，让 AI 成为你的编程搭档
 - 🔌 **MCP 协议集成**：让 AI 直接操作 Figma、GitHub、数据库等工具，打通全链路
 - 📝 **Spec 驱动开发**：AI 时代的最佳开发实践，用规范驱动高效产出
@@ -103,13 +103,22 @@
 | 32 | [推送通知](05-SwiftUI进阶/32-推送通知.md) |
 | 33 | [WidgetKit 小组件](05-SwiftUI进阶/33-WidgetKit小组件.md) |
 | 34 | [实战②：完成「天气 App」](05-SwiftUI进阶/34-实战天气App.md) |
-| 58 | [SwiftData 现代数据框架](05-SwiftUI进阶/58-SwiftData现代数据框架.md) |
-| 59 | [@Observable 与 Observation 框架](05-SwiftUI进阶/59-Observable与Observation框架.md) |
-| 60 | [Live Activities 与灵动岛](05-SwiftUI进阶/60-Live-Activities与灵动岛.md) |
-| 61 | [地图与定位](05-SwiftUI进阶/61-地图与定位.md) |
-| 62 | [App Intents 与 Siri 快捷指令](05-SwiftUI进阶/62-App-Intents与Siri快捷指令.md) |
-| 63 | [相册与相机](05-SwiftUI进阶/63-相册与相机.md) |
-| 64 | [Swift Testing 新测试框架](05-SwiftUI进阶/64-Swift-Testing新测试框架.md) |
+| 35 | [SwiftData 现代数据框架](05-SwiftUI进阶/35-SwiftData现代数据框架.md) |
+| 36 | [@Observable 与 Observation 框架](05-SwiftUI进阶/36-Observable与Observation框架.md) |
+| 37 | [Live Activities 与灵动岛](05-SwiftUI进阶/37-Live-Activities与灵动岛.md) |
+| 38 | [地图与定位](05-SwiftUI进阶/38-地图与定位.md) |
+| 39 | [App Intents 与 Siri 快捷指令](05-SwiftUI进阶/39-App-Intents与Siri快捷指令.md) |
+| 40 | [相册与相机](05-SwiftUI进阶/40-相册与相机.md) |
+| 41 | [Swift Testing 新测试框架](05-SwiftUI进阶/41-Swift-Testing新测试框架.md) |
+| 84 | [UIKit 与 SwiftUI 互操作](05-SwiftUI进阶/84-UIKit与SwiftUI互操作.md) |
+| 85 | [Sign in with Apple 与第三方登录](05-SwiftUI进阶/85-Sign-in-with-Apple与第三方登录.md) |
+| 86 | [后台任务与多任务](05-SwiftUI进阶/86-后台任务与多任务.md) |
+| 87 | [Keychain 与数据安全](05-SwiftUI进阶/87-Keychain与数据安全.md) |
+| 89 | [iPad 适配与多窗口](05-SwiftUI进阶/89-iPad适配与多窗口.md) |
+| 93 | [Core ML 与设备端 AI](05-SwiftUI进阶/93-Core-ML与设备端AI.md) |
+| 95 | [CloudKit 与 iCloud 同步](05-SwiftUI进阶/95-CloudKit与iCloud同步.md) |
+| 96 | [音频与视频处理](05-SwiftUI进阶/96-音频与视频处理.md) |
+| 97 | [HealthKit 与传感器](05-SwiftUI进阶/97-HealthKit与传感器.md) |
 
 ### 第六篇：项目实战 — 开发你的上架 App
 
@@ -126,6 +135,8 @@
 | 50 | [打磨细节：体验优化](06-项目实战/50-打磨细节体验优化.md) |
 | 51 | [Xcode Cloud CI/CD](06-项目实战/51-Xcode-Cloud-CI-CD.md) |
 | 52 | [TipKit 引导与新手教学](06-项目实战/52-TipKit引导与新手教学.md) |
+| 88 | [调试与性能优化](06-项目实战/88-调试与性能优化.md) |
+| 91 | [依赖管理与开源库](06-项目实战/91-依赖管理与开源库.md) |
 
 ### 第七篇：上架准备 — 国内 + 国际双线并行
 
@@ -145,6 +156,7 @@
 | 64 | [国内域名购买与备案全流程](07-上架准备/64-国内域名购买与备案全流程.md) |
 | 65 | [国内服务器部署与网站备案](07-上架准备/65-国内服务器部署与网站备案.md) |
 | 66 | [App 视觉素材设计与 ASO 转化](07-上架准备/66-App视觉素材设计与ASO转化.md) |
+| 94 | [App Extension 全景](07-上架准备/94-App-Extension全景.md) |
 
 ### 第八篇：审核与上架 — 攻坚战
 
@@ -154,6 +166,7 @@
 | 68 | [提交审核](08-审核与上架/68-提交审核.md) |
 | 69 | [审核被拒全面应对](08-审核与上架/69-审核被拒全面应对.md) |
 | 70 | [上架成功！版本迭代](08-审核与上架/70-上架成功版本迭代.md) |
+| 90 | [崩溃监控与日志收集](08-审核与上架/90-崩溃监控与日志收集.md) |
 
 ### 第九篇：增长与变现
 
@@ -171,12 +184,17 @@
 | 80 | [落地页与引导页设计](09-增长与变现/80-落地页与引导页设计.md) |
 | 81 | [推广平台与获客渠道实战](09-增长与变现/81-推广平台与获客渠道实战.md) |
 | 82 | [广告变现全攻略](09-增长与变现/82-广告变现全攻略.md) |
+| 100 | [用户留存策略](09-增长与变现/100-用户留存策略.md) |
+| 101 | [社区运营与用户生态](09-增长与变现/101-社区运营与用户生态.md) |
 
-### 第十篇：visionOS 入门 — 探索空间计算
+### 第十篇：多平台开发 — 跨越 Apple 生态
 
 | 章节 | 标题 |
 |:---:|------|
-| 83 | [visionOS 入门](10-visionOS入门/83-visionOS入门.md) |
+| 83 | [visionOS 入门](10-多平台开发/83-visionOS入门.md) |
+| 92 | [watchOS 快速入门](10-多平台开发/92-watchOS快速入门.md) |
+| 98 | [Mac Catalyst 与 macOS 移植](10-多平台开发/98-macCatalyst与macOS移植.md) |
+| 99 | [tvOS 快速入门](10-多平台开发/99-tvOS快速入门.md) |
 
 ### 附录
 
