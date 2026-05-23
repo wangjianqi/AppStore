@@ -1085,3 +1085,5 @@ NetworkKit.xcframework/
 | 发布流程 | Git Tag 标记版本、GitHub Release 附带说明、Swift Package Index 注册增加曝光 |
 | Plugin 开发 | Command Plugin 手动触发、Build Tool Plugin 自动执行、沙箱限制注意网络访问 |
 | Binary Framework | XCFramework 多平台合并、`BUILD_LIBRARY_FOR_DISTRIBUTION=YES`、checksum 校验完整性 |
+
+← [-架构模式对比与选型](./83-架构模式对比与选型.md) | [-国内上架：ICP 备案全流程](../07-上架准备/85-国内上架ICP备案全流程.md) →

@@ -874,3 +874,5 @@ class HybridViewModel: ObservableObject {
 | SwiftUI 集成 | .onReceive 监听、@Published 桥接、ObservableObject 内部用 Combine 驱动 |
 | 实战搜索框 | debounce 防抖 → removeDuplicates 去重 → filter 过滤 → flatMap 请求 → catch 容错 |
 | Combine vs async/await | Combine 擅长事件流与组合，async/await 擅长顺序异步；混合使用最佳 |
+
+← [-SwiftUI Charts 数据可视化](./66-SwiftUI-Charts数据可视化.md) | [-需求分析与产品设计](../06-项目实战/68-需求分析与产品设计.md) →

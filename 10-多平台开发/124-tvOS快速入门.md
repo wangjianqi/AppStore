@@ -864,3 +864,7 @@ NavigationLink(value: video) {
 | 实战项目 | 视频流媒体 App：数据模型 → 主界面 → 卡片 → 播放器 → 导航 |
 
 > 💡 **学习建议**：tvOS 开发的核心难点在于 **Focus Engine** 和 **大屏适配**。建议先用模拟器熟悉焦点导航行为，再连接真机测试遥控器交互。如果你已经熟悉 iOS 开发，tvOS 的学习曲线相对平缓——最大的思维转变是从"触摸"到"遥控"。
+
+← [-macCatalyst 与 macOS 移植](./123-macCatalyst与macOS移植.md)
+
+← [-macCatalyst 与 macOS 移植](./123-macCatalyst与macOS移植.md)

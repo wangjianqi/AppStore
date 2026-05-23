@@ -821,4 +821,6 @@ enum NetworkAuditLogger {
 
 > 💡 **一句话总结**：网络安全不是可选项，而是 App 上架的必答题。从 ATS 配置到证书固定，从请求签名到等保合规，每一层防护都在为用户数据筑起一道墙。安全投入越早，修复成本越低。
 
-⬅️ [上一章：105-隐私清单与API声明](./105-隐私清单与API声明.md) ｜ ➡️ [下一章：107-App加密与数据保护](./107-App加密与数据保护.md)
+⬅️ [上一章：105-隐私清单与API声明](./105-隐私清单与API声明.md) ｜
+
+← [-深度链接与 Universal Links](./61-深度链接与Universal-Links.md) | [-Web 视图与 Safari Services](./63-Web视图与Safari-Services.md) →

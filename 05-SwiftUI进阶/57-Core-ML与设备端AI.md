@@ -879,3 +879,5 @@ mlmodel = ct.convert(
 | 隐私合规 | 设备端 AI 天然隐私友好；隐私清单声明；App Store AI 审核要点 |
 
 > 💡 **一句话总结**：Core ML 让 AI 推理在设备上高效运行——Create ML 零代码训练，Vision/NL/Speech 开箱即用，coremltools 桥接生态，设备端运行天然保护隐私。掌握这套工具链，就能在 App 中构建既智能又安全的 AI 功能。
+
+← [-iPad 适配与多窗口](./56-iPad适配与多窗口.md) | [-CloudKit 与 iCloud 同步](./58-CloudKit与iCloud同步.md) →

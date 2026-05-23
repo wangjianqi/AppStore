@@ -748,3 +748,5 @@ SwiftUI 的 View 是 struct（值类型），没有引用计数，不存在循�
 | Instruments | Allocations 看增长、Leaks 找泄漏、Memory Graph 看引用链 |
 | SwiftUI | View struct 无循环引用；@StateObject 拥有、@ObservedObject 接收；订阅必须 weak + 取消 |
 | 最佳实践 | Delegate weak、闭包 weak self、Timer invalidate、定期 Memory Graph 检查 |
+
+← [-Swift 6 与严格并发迁移](./27-Swift-6与严格并发迁移.md) | [-Swift 泛型与类型系统深入](./29-Swift泛型与类型系统深入.md) →

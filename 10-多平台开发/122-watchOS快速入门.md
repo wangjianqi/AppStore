@@ -1030,3 +1030,5 @@ struct TimerComplicationView: View {
 | **通知与后台** | 远程通知；快照预览；计划后台刷新 |
 | **设计规范** | 大字体、精简文字、最少滚动、触觉反馈 |
 | **实战计时器** | SwiftUI + Timer + Complication 完整流程 |
+
+← [-visionOS 入门](./121-visionOS入门.md) | [-macCatalyst 与 macOS 移植](./123-macCatalyst与macOS移植.md) →

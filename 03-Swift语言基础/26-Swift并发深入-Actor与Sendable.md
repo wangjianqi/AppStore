@@ -782,3 +782,5 @@ func startDownload() {
 | **最佳实践** | 不过度创建 Task、精用 MainActor、优先级、取消处理 | `Task.checkCancellation()`, `priority:` |
 
 > 💡 **学习路径建议**：先掌握 Actor 和 Sendable（解决数据竞争），再学结构化并发（管理任务生命周期），最后深入 AsyncStream（处理异步数据流）。Swift 6 的严格并发模式是未来，现在打好基础，迁移时事半功倍。
+
+← [-集合类型与闭包](./25-集合类型与闭包.md) | [-Swift 6 与严格并发迁移](./27-Swift-6与严格并发迁移.md) →

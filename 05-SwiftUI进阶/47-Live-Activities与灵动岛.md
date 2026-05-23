@@ -944,3 +944,5 @@ Text(context.state.status.rawValue)
 | 审核要求 | 必须有明确结束、信息真实、不能做广告 |
 
 > 💡 Live Activities 是提升用户体验的利器，但要用在"刀刃"上——只在用户真正需要实时信息的场景下使用。一个好的 Live Activity 应该让用户**少打开 App，多享受生活**。
+
+← [-@Observable 与 Observation 框架](./46-Observable与Observation框架.md) | [-地图与定位](./48-地图与定位.md) →

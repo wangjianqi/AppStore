@@ -987,3 +987,5 @@ npm install -g @modelcontextprotocol/server-filesystem
 MCP 正在快速改变开发者与 AI 协作的方式。对于 iOS 开发者来说，掌握 MCP 意味着你可以让 AI 真正融入你的工作流——从设计稿到代码、从 Issue 到 PR、从文档到实现，AI 不再只是"聊天助手"，而是你的"开发搭档"。
 
 > 💡 **下一步**：从最简单的文件系统 MCP 开始配置，体验 AI 直接操作项目文件的能力。然后逐步添加 GitHub、Figma 等 Server，让 AI 的能力越来越强。
+
+← [-AI 辅助开发最佳实践](./11-AI辅助开发最佳实践.md) | [-AI CLI 工具与自动化](./13-AI-CLI工具与自动化.md) →

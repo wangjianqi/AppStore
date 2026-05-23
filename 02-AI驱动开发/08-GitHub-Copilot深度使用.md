@@ -632,3 +632,5 @@ Claude Code：我发现了以下问题：
 9. **Copilot + Claude Code 是最佳拍档**：Copilot 负责日常编码和快速补全，Claude Code 负责项目级操作和深度分析
 
 > 💡 **最后的话**：AI 编程工具正在快速进化，具体的界面和功能可能会变化，但"善用注释引导"、"审阅后再接受"、"多工具协作"这些核心理念是长期有效的。学会这些思维方式，无论工具怎么变，你都能快速上手。
+
+← [-OpenAI Codex 深度使用](./07-OpenAI-Codex深度使用.md) | [-Cursor / Trae 等 AI IDE](./09-Cursor与Trae等AI-IDE.md) →

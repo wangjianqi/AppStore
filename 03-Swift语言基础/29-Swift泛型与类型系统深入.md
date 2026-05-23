@@ -930,3 +930,5 @@ config[BaseURLKey.self] = "https://prod.example.com"
 | SwiftUI 泛型 | View/PreferenceKey/Environment 的类型安全设计 | `associatedtype Body: View` |
 
 > 💡 **学习建议**：泛型和类型系统是 Swift 最强大也最复杂的特性。建议从 `some View` 和 `any Protocol` 这两个最常用的语法入手，逐步理解背后的类型系统设计。遇到编译器报错时，仔细阅读错误信息——Swift 的泛型错误提示在近年版本中已经大幅改善，通常能直接告诉你缺少什么约束。
+
+← [-ARC 与内存管理](./28-ARC与内存管理.md) | [-SwiftUI 初体验：第一个项目](../04-SwiftUI入门/30-SwiftUI初体验.md) →

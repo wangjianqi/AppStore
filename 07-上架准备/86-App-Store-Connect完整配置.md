@@ -719,3 +719,5 @@ Thank you for your feedback — you make this app better! ❤️
 ```
 
 👉 **下一步**：完成 App Store Connect 配置后，就可以准备提交审核了！继续阅读后续章节了解提审流程和审核注意事项。
+
+← [-国内上架：ICP 备案全流程](./85-国内上架ICP备案全流程.md) | [-隐私与权限合规](./87-隐私与权限合规.md) →

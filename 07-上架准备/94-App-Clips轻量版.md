@@ -841,3 +841,5 @@ func application(_ application: UIApplication,
 | 审核要求 | 功能完整、体积合规、支持 Apple Pay 和 Sign in with Apple |
 
 > 💡 App Clips 的核心哲学：**让用户在最需要的时刻，用最少的步骤，完成最核心的功能**。记住这个原则，你就能设计出优秀的 App Clip 体验。
+
+← [-TestFlight 测试](./93-TestFlight测试.md) | [-App Extension 全景](./95-App-Extension全景.md) →

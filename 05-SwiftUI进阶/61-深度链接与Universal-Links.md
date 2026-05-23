@@ -864,3 +864,5 @@ struct LandingPageHandler {
 | 常见问题 | 微信不触发 Universal Links 需兜底、AASA 缓存需卸载重装、统一路由入口 |
 
 > 💡 **一句话总结**：深度链接是连接"外部世界"和"App 内部"的桥梁——配置 Universal Links 保证安全无缝，保留 URL Scheme 兜底兼容，用统一路由架构保持代码清晰，在国内别忘了微信适配。
+
+← [-HealthKit 与传感器](./60-HealthKit与传感器.md) | [-网络安全与 ATS 配置](./62-网络安全与ATS配置.md) →

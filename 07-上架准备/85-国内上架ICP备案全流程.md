@@ -664,3 +664,5 @@ class ICPBeianView: UIView {
 ```
 
 👉 **下一步**：[39-App Store Connect 完整配置](./39-App-Store-Connect完整配置.md) — 备案完成后，接下来就是 App Store Connect 的完整配置了！
+
+← [-Swift Package 开发与发布](../06-项目实战/84-Swift-Package开发与发布.md) | [-App Store Connect 完整配置](./86-App-Store-Connect完整配置.md) →

@@ -756,3 +756,5 @@ let container = try ModelContainer(for: coreDataModel)
 | vs SwiftData | Core Data 成熟稳定兼容广，SwiftData 简洁现代但限 iOS 17+ |
 
 Core Data 虽然学习曲线陡峭，但它是 iOS 开发的"基本功"——理解了 Core Data，你不仅能维护存量项目，也能更深入地理解 SwiftData 的底层原理。选对工具，事半功倍！🎯
+
+← [-Apple Intelligence 与 Controls API](./64-Apple-Intelligence与Controls-API.md) | [-SwiftUI Charts 数据可视化](./66-SwiftUI-Charts数据可视化.md) →

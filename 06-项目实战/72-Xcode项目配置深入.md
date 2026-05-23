@@ -775,3 +775,5 @@ end
 | Capabilities | .entitlements 声明系统权限，需与 Developer Portal 同步开启，多环境可使用不同 entitlements |
 | 多环境实战 | 通过 xcconfig + Info.plist 变量替换实现 API URL、Bundle ID、App Icon 的环境切换 |
 | 最佳实践 | 用 xcconfig 替代 UI 配置、忽略用户数据、统一团队配置、排查 $(inherited) 缺失问题 |
+
+← [-项目搭建与架构](./71-项目搭建与架构.md) | [-依赖管理与开源库](./73-依赖管理与开源库.md) →

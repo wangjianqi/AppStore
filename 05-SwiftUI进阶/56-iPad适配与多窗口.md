@@ -980,3 +980,5 @@ struct NotesApp: App {
 | **Drag and Drop** | onDrop 接收、draggable/transferable 拖出、UTType 指定数据类型 |
 | **适配策略** | 用 Size Class 而非设备类型判断、iPad 多栏 vs iPhone 堆叠、条件编译兜底 |
 | **实战适配** | NavigationStack → NavigationSplitView、添加键盘/鼠标/拖放支持、多窗口配置 |
+
+← [-Keychain 与数据安全](./55-Keychain与数据安全.md) | [-Core ML 与设备端 AI](./57-Core-ML与设备端AI.md) →

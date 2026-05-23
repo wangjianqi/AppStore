@@ -806,3 +806,5 @@ struct PasswordValidatorTests {
 | 实战重写 | 参数化测试 + `#expect(throws:)` 大幅减少代码量 |
 
 **一句话总结**：Swift Testing 让测试代码从"样板工程"变成"自然表达"——写什么就测什么，不用再被框架的条条框框束缚。
+
+← [-相册与相机](./50-相册与相机.md) | [-UIKit 与 SwiftUI 互操作](./52-UIKit与SwiftUI互操作.md) →

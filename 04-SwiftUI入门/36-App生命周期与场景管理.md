@@ -875,3 +875,5 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 | 实战要点 | 后台计时用时间差补算，数据保存放在 `.background` 阶段，敏感数据用 Keychain |
 
 > 🎯 **下一步**：掌握了 App 生命周期后，建议继续学习后台任务调度（BGTaskScheduler）和深度链接（Deep Link），它们都是基于生命周期知识的进阶应用。
+
+← [-实战①：完成「待办清单」App](./35-实战待办清单App.md) | [-自定义组件与样式系统](../05-SwiftUI进阶/37-自定义组件与样式.md) →

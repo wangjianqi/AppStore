@@ -1121,3 +1121,5 @@ func useNonPersistentStorage() {
 | **审核合规** | 避免纯 Web 包装、不在 WebView 中绕过 IAP、Cookie 隐私合规 | ATT、隐私政策 |
 
 > 💡 **最佳实践总结**：能用 SFSafariViewController 就不要用 WKWebView；必须用 WKWebView 时，务必实现 WKUIDelegate 处理弹窗；涉及 OAuth 授权优先使用 ASWebAuthenticationSession；始终注意 Cookie 同步和隐私合规。
+
+← [-网络安全与 ATS 配置](./62-网络安全与ATS配置.md) | [-Apple Intelligence 与 Controls API](./64-Apple-Intelligence与Controls-API.md) →

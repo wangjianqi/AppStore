@@ -997,3 +997,5 @@ class LargeDataStore {
 | `@ObservationIgnored` | 排除不需要追踪的属性 |
 
 > 💡 **学习建议**：如果你是新项目且最低支持 iOS 17，请直接使用 `@Observable`，无需再学 `ObservableObject`。如果需要兼容旧版本，先掌握 `ObservableObject`，等升级最低版本后再迁移。
+
+← [- SwiftData 现代数据框架](./45-SwiftData现代数据框架.md) | [-Live Activities 与灵动岛](./47-Live-Activities与灵动岛.md) →

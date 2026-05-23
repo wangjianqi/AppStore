@@ -933,3 +933,5 @@ struct AddTodoIntent: AppIntent {
 ```
 
 App Intents 是苹果生态的重要方向——随着 Siri 越来越智能，让你的 App 支持 App Intents，就是让用户更容易地使用你的 App。从最简单的 Intent 开始，逐步添加 Entity、Query 和 Shortcut，你的 App 就能和系统深度集成。
+
+← [-地图与定位](./48-地图与定位.md) | [-相册与相机](./50-相册与相机.md) →

@@ -676,3 +676,5 @@ func send(message: consuming String) {
 | 迁移 Checklist | 准备→开启检查→逐模块修复→切换 Swift 6→清理优化 |
 
 > 💡 Swift 6 的严格并发检查看似"严格"，实则是"保护"。就像系安全带——刚开始觉得麻烦，但关键时刻能救命。花时间做好迁移，你的 App 将拥有更可靠的并发安全性，减少那些难以复现的线上崩溃。
+
+← [-Swift 并发深入：Actor、Sendable 与结构化并发](./26-Swift并发深入-Actor与Sendable.md) | [-ARC 与内存管理](./28-ARC与内存管理.md) →

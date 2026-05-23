@@ -416,3 +416,47 @@ fly deploy                              # Fly.io
 - [ ] 环境变量已配置
 - [ ] API 文档已更新
 - [ ] 日志和监控已配置
+
+---
+
+## 已知陷阱
+
+### Supabase
+
+| 问题 | 原因 | 解决方案 |
+|------|------|---------|
+| RLS 策略调试困难 | 策略报错信息不明确 | 用 `supabase.auth.uid()` 逐步排查，开启 Supabase 日志 |
+| `service_role` Key 暴露前端 | 绕过 RLS，安全风险 | 前端只用 `anon` Key，`service_role` 仅限后端/Edge Functions |
+| `security_invoker` 未设置 | 视图默认用创建者权限 | 创建视图时 `security_invoker = true`，确保 RLS 生效 |
+| Edge Function 冷启动 | 首次请求延迟 500ms+ | 保持函数温热（定时 ping），或接受冷启动 |
+| 实时订阅断连 | WebSocket 超时 | 实现自动重连 + 心跳检测 |
+| 存储桶权限过宽 | 公开桶任何人可读写 | 按需设置 RLS 策略，敏感文件用私有桶 + 签名 URL |
+
+### Cloudflare Workers
+
+| 问题 | 原因 | 解决方案 |
+|------|------|---------|
+| 冷启动延迟 | 首次请求需初始化 | 保持 Worker 温热（cron trigger），或接受冷启动 |
+| CPU 时间限制 | 免费版 10ms/请求 | 优化计算逻辑，重计算放 D1/Durable Objects |
+| D1 数据库延迟 | 冷读较慢 | 热数据用 KV 缓存，D1 做持久层 |
+| 环境变量泄露 | `wrangler.toml` 提交到 Git | 敏感值用 `wrangler secret put`，不写配置文件 |
+| 请求体大小限制 | 免费版 100MB | 大文件用 R2 直传 + 预签名 URL |
+
+### Vapor
+
+| 问题 | 原因 | 解决方案 |
+|------|------|---------|
+| 内存泄漏 | 长期运行的连接未释放 | 使用 `EventLoopFuture` 时确保 `promise` 完成，监控内存 |
+| 数据库连接池耗尽 | 并发请求超过连接数 | 配置 `maxConnections`，使用连接池监控 |
+| Fluent 迁移失败 | 迁移顺序错误 | 确保迁移按依赖顺序执行，禁止修改已发布迁移 |
+| 部署后 502 | Fly.io 健康检查失败 | 确保监听 `0.0.0.0` 而非 `localhost`，配置 `PORT` 环境变量 |
+| JWT 过期未刷新 | Token 过期后请求失败 | 客户端实现自动刷新，Vapor 端返回 401 触发刷新 |
+
+### Firebase
+
+| 问题 | 原因 | 解决方案 |
+|------|------|---------|
+| Firestore 读写费用高 | 频繁查询未优化 | 添加复合索引，使用批量读取，减少实时监听范围 |
+| 安全规则过宽 | `allow read, write: if true` | 按 `request.auth != null` 限制，测试用 Rules Playground |
+| 冷启动延迟 | Cloud Functions 初始化 | 最小化依赖，保持函数温热 |
+| Google 登录配置 | iOS URL Scheme 缺失 | 添加 `REVERSED_CLIENT_ID` 到 URL Types |

@@ -1581,3 +1581,5 @@ struct SignInWithAppleDemo: View {
 8. Sign in with Apple 的 ASAuthorizationController 是互操作的典型实战场景
 
 📖 **上一章**：[83-visionOS入门](../10-visionOS入门/83-visionOS入门.md)
+
+← [-Swift Testing 新测试框架](./51-Swift-Testing新测试框架.md) | [-Sign in with Apple 与第三方登录](./53-Sign-in-with-Apple与第三方登录.md) →

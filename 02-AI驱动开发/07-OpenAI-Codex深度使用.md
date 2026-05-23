@@ -450,3 +450,5 @@ Codex 可以与 CI/CD 流程结合，在持续集成中发挥作用：
 7. **推荐组合使用**——根据场景选择最合适的工具，用 Git 管理所有变更
 
 > 📖 **下一步**：掌握了终端 AI 工具后，让我们进入 AI IDE 的世界，学习 Cursor 和 Trae——在编辑器里直接享受 AI 编程的便捷。👉 [08-Cursor与Trae等AI-IDE](./08-Cursor与Trae等AI-IDE.md)
+
+← [-Claude Code 深度使用](./06-Claude-Code深度使用.md) | [-GitHub Copilot 深度使用](./08-GitHub-Copilot深度使用.md) →

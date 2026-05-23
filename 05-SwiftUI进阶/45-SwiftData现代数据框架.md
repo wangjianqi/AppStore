@@ -1109,3 +1109,5 @@ descriptor.fetchOffset = 0
 | 实战 | 待办清单 App 完整持久化方案 |
 
 SwiftData 让数据持久化变得像写 SwiftUI 界面一样简单——声明你想要什么，框架帮你实现。掌握了 SwiftData，你的 App 就能真正"记住"用户的数据了！🎉
+
+← [-动画与手势](./44-动画与手势.md) | [-@Observable 与 Observation 框架](./46-Observable与Observation框架.md) →

@@ -815,3 +815,5 @@ struct RecipeEntity: AppEntity {
 ```
 
 Apple Intelligence 代表了 Apple 生态的未来方向——让 AI 深度理解用户的 App 和数据，同时坚守隐私底线。作为开发者，通过 App Intents 和 Controls API 让你的 App 与系统智能深度集成，不仅提升了用户体验，也让你的 App 在 AI 时代更具竞争力。
+
+← [-Web 视图与 Safari Services](./63-Web视图与Safari-Services.md) | [-Core Data 入门（选读）](./65-Core-Data入门选读.md) →

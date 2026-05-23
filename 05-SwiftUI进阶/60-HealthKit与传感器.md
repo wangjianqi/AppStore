@@ -1342,3 +1342,5 @@ struct DataUsageRow: View {
 | **审核注意事项** | 指南 5.2.1 严格审查，隐私政策必备，数据最小化，禁止出售数据 | 审核指南 5.2.1, `NSHealthShareUsageDescription` |
 
 > 🎯 **一句话总结**：HealthKit 是 Apple 健康生态的核心枢纽——理解其权限模型（读写分离、用户可控），掌握查询体系（Sample/Statistics/Observer），结合 CoreMotion 获取实时传感器数据，并在 SwiftUI 中以异步方式优雅地呈现，同时严格遵循审核指南 5.2.1，才能构建出既功能强大又合规的健康类应用。
+
+← [-音频与视频处理](./59-音频与视频处理.md) | [-深度链接与 Universal Links](./61-深度链接与Universal-Links.md) →

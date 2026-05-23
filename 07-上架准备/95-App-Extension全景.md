@@ -967,3 +967,5 @@ Share Extension → 在 Extension 内完成内容预览/编辑 → 保存到 App
 | Sticker Pack | 无代码创建 iMessage 贴纸，复杂交互需使用 iMessage App |
 | App Group | 三种共享方式：UserDefaults（键值）、文件（大数据）、Keychain（敏感数据） |
 | 审核注意事项 | Extension 独立审核，功能必须独立完整，隐私合规，避免仅作跳转入口 |
+
+← [-App Clips 轻量版](./94-App-Clips轻量版.md) | [-Support 页面与用户支持](./96-Support页面与用户支持.md) →
