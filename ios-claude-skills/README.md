@@ -1,6 +1,6 @@
 # iOS Claude Code Skills 工具包
 
-> 10 个 SKILL.md 文件，开箱即用，覆盖独立 iOS 开发者的核心场景。
+> 20 个 SKILL.md 文件，开箱即用，覆盖独立 iOS 开发者的核心场景。
 
 ---
 
@@ -28,6 +28,8 @@ cp -r ios-claude-skills/* ~/.claude/skills/
 
 ## Skills 列表
 
+### 客户端核心
+
 | # | 文件 | 触发场景 |
 |---|------|---------|
 | 01 | ui-framework | 界面、布局、ViewController、导航 |
@@ -38,8 +40,38 @@ cp -r ios-claude-skills/* ~/.claude/skills/
 | 06 | network-api | 网络请求、API、后端对接 |
 | 07 | localization | 中英文本地化、文案规范 |
 | 08 | subscription-paywall | IAP、StoreKit 2、Paywall 页面 |
-| 09 | essential-community-skills | 社区必备 Skill 安装推荐、xcodebuild、SwiftUI Pro、设备参数、HIG、后端搭建（Supabase/Firebase/Vapor/Cloudflare Workers）、认证安全 |
-| 10 | backend-server | 后端搭建、API 开发、数据库设计、Supabase、Vapor、Cloudflare Workers、认证、BaaS、Serverless |
+
+### 数据与存储
+
+| # | 文件 | 触发场景 |
+|---|------|---------|
+| 11 | data-persistence | CoreData、SwiftData、Keychain、UserDefaults、FileManager、数据库迁移 |
+
+### 系统能力
+
+| # | 文件 | 触发场景 |
+|---|------|---------|
+| 12 | push-notification | 推送通知、APNs、Background Tasks、Rich Notification、Silent Push |
+| 15 | widget-live-activity | Widget、WidgetKit、Live Activity、Dynamic Island、灵动岛 |
+| 16 | multimedia | 音频录制/播放、视频编辑、Photos Framework、图片压缩缓存 |
+| 17 | location-maps | 地图、定位、CoreLocation、MapKit、地理围栏、后台定位 |
+
+### 质量保障
+
+| # | 文件 | 触发场景 |
+|---|------|---------|
+| 13 | testing | 单元测试、UI 测试、Mock、Snapshot Testing、异步测试 |
+| 14 | performance-debug | 性能优化、Instruments、启动优化、内存优化、包体积瘦身 |
+| 18 | security-crypto | 加密、CryptoKit、Keychain 安全、Certificate Pinning、App Attest |
+| 20 | logging-monitoring | 日志、崩溃监控、Crashlytics、Analytics 埋点、性能监控 |
+
+### 混合开发与生态
+
+| # | 文件 | 触发场景 |
+|---|------|---------|
+| 09 | essential-community-skills | 社区必备 Skill 安装推荐、xcodebuild、SwiftUI Pro、设备参数、HIG |
+| 10 | backend-server | 后端搭建、API 开发、数据库设计、Supabase、Vapor、Cloudflare Workers |
+| 19 | swiftui-hybrid | UIKit↔SwiftUI 互操作、UIHostingController、UIViewRepresentable |
 
 ---
 
@@ -60,6 +92,9 @@ description: Claude Code 识别触发条件（越具体越好）
 - `06-network-api`：修改后端地址、认证方式、响应格式
 - `08-subscription-paywall`：修改为你的实际产品 ID
 - `10-backend-server`：修改为你选用的后端方案（Supabase / Vapor / Cloudflare Workers / Firebase）
+- `11-data-persistence`：修改为你选用的存储方案（CoreData / SwiftData）
+- `12-push-notification`：修改为你的推送服务提供商
+- `20-logging-monitoring`：修改为你选用的监控方案（Firebase / 自建）
 
 **踩到新坑就更新对应 Skill**，文件会越用越准。
 
@@ -76,6 +111,9 @@ description: Claude Code 识别触发条件（越具体越好）
 - 存储：UserDefaults + CoreData + Keychain
 - 订阅：StoreKit 2
 - AI：OpenAI Whisper + Anthropic Claude（后端代理）
+- 测试：XCTest + Mock（Protocol-Based）
+- 监控：Firebase Crashlytics + Analytics
+- 日志：OSLog
 
 ---
 

@@ -375,6 +375,161 @@ cp -r skills/backend-security ~/.claude/skills/
 
 ---
 
+## 十、数据持久化与存储
+
+> 💡 本项目已有 **`11-data-persistence`** Skill，覆盖 CoreData / SwiftData / Keychain / UserDefaults / FileManager 规范。以下为社区可补充安装的存储相关 Skills。
+
+### 23. Supabase Postgres Best Practices
+
+- **仓库**：https://github.com/supabase/agent-skills
+- **技能名**：`postgres-best-practices`
+- **用途**：PostgreSQL 索引策略、查询优化、迁移管理、RLS 策略编写
+- **安装**：
+  ```bash
+  npx skills add supabase/agent-skills
+  ```
+- **适用场景**：使用 Supabase 作为后端数据库时的最佳实践，配合 `11-data-persistence` 的 CoreData 本地存储形成完整方案
+
+---
+
+## 十一、推送通知与后台任务
+
+> 💡 本项目已有 **`12-push-notification`** Skill，覆盖 APNs / UNUserNotificationCenter / Background Tasks / Rich Notification。以下为社区可补充安装的推送相关 Skills。
+
+### 24. Firebase Cloud Messaging
+
+- **仓库**：https://github.com/TovTechOrg/tovtech-skills
+- **技能名**：`setup-firebase`
+- **用途**：Firebase 集成包含 FCM 推送配置，自动生成推送相关配置文件
+- **安装**：
+  ```bash
+  cp -r skills/setup-firebase ~/.claude/skills/
+  ```
+- **适用场景**：使用 Firebase 作为推送服务提供商时，配合 `12-push-notification` 的客户端推送规范
+
+---
+
+## 十二、测试
+
+> 💡 本项目已有 **`13-testing`** Skill，覆盖 XCTest / Mock / Snapshot Testing / 异步测试。以下为社区可补充安装的测试相关 Skills。
+
+### 25. Swift Expert（含测试指导）
+
+- **仓库**：https://github.com/jeffallan/claude-skills
+- **技能名**：`swift-expert`
+- **用途**：协议优先架构、async/await 正确/错误模式、XCTest 异步测试模式
+- **安装**：
+  ```bash
+  npx skills add https://github.com/jeffallan/claude-skills --skill swift-expert
+  ```
+- **适用场景**：Swift 高级测试模式、并发测试、协议 Mock 设计
+
+---
+
+## 十三、性能优化与调试
+
+> 💡 本项目已有 **`14-performance-debug`** Skill，覆盖 Instruments / 启动优化 / 内存优化 / 包体积。以下为社区可补充安装的性能相关 Skills。
+
+### 26. iOS Agent Skills — Quality Gates
+
+- **仓库**：https://github.com/troyjthomas/ios-agent-skills
+- **技能名**：`quality-gates`
+- **用途**：会话结束时的质量检查清单，包含性能、内存、安全等维度
+- **安装**：
+  ```bash
+  curl -fsSL https://raw.githubusercontent.com/troyjthomas/ios-agent-skills/main/install.sh | bash
+  ```
+- **适用场景**：配合 `14-performance-debug` 在开发过程中自动检查性能问题
+
+---
+
+## 十四、Widget / Live Activity
+
+> 💡 本项目已有 **`15-widget-live-activity`** Skill，覆盖 WidgetKit / ActivityKit / Dynamic Island。以下为社区可补充安装的 Widget 相关 Skills。
+
+### 27. SwiftUI Pro（Widget 必备）
+
+- **仓库**：https://github.com/twostraws/swiftui-agent-skill
+- **技能名**：`swiftui-pro`
+- **用途**：Widget 必须使用 SwiftUI，此 Skill 提供 SwiftUI 最佳实践
+- **安装**：
+  ```bash
+  npx skills add https://github.com/twostraws/swiftui-agent-skill --skill swiftui-pro
+  ```
+- **适用场景**：开发 Widget 时配合 `15-widget-live-activity` 使用，确保 SwiftUI 代码质量
+
+---
+
+## 十五、安全与加密
+
+> 💡 本项目已有 **`18-security-crypto`** Skill，覆盖 CryptoKit / Keychain 安全 / Certificate Pinning / App Attest。以下为社区可补充安装的安全相关 Skills。
+
+### 28. Security 全套（API + Backend + Database）
+
+- **仓库**：https://github.com/steveantini/claude-templates
+- **技能名**：`api-security` + `backend-security` + `database-security`
+- **用途**：JWT 验证、API Key 管理/轮换、OAuth2 PKCE、CORS、速率限制、密码哈希、SQL 注入防护
+- **安装**：
+  ```bash
+  cp -r skills/api-security ~/.claude/skills/
+  cp -r skills/backend-security ~/.claude/skills/
+  cp -r skills/database-security ~/.claude/skills/
+  ```
+- **适用场景**：配合 `18-security-crypto` 的客户端安全，覆盖服务端安全
+
+---
+
+## 十六、SwiftUI 混合开发
+
+> 💡 本项目已有 **`19-swiftui-hybrid`** Skill，覆盖 UIKit↔SwiftUI 互操作。以下为社区可补充安装的 SwiftUI 相关 Skills。
+
+### 29. SwiftUI Pro（Paul Hudson 出品）
+
+- **仓库**：https://github.com/twostraws/swiftui-agent-skill
+- **技能名**：`swiftui-pro`
+- **用途**：SwiftUI 最佳实践，覆盖视图生命周期、状态管理、性能优化
+- **安装**：
+  ```bash
+  npx skills add https://github.com/twostraws/swiftui-agent-skill --skill swiftui-pro
+  ```
+- **适用场景**：在 UIKit 项目中嵌入 SwiftUI 页面时，确保 SwiftUI 代码质量
+
+---
+
+## 十七、日志与监控
+
+> 💡 本项目已有 **`20-logging-monitoring`** Skill，覆盖 OSLog / Crashlytics / Analytics 埋点 / 性能监控。以下为社区可补充安装的监控相关 Skills。
+
+### 30. iOS Agent Skills — Post Launch
+
+- **仓库**：https://github.com/troyjthomas/ios-agent-skills
+- **技能名**：`post-launch`
+- **用途**：上架后维护 — 崩溃报告分析、版本管理、用户反馈处理
+- **安装**：
+  ```bash
+  curl -fsSL https://raw.githubusercontent.com/troyjthomas/ios-agent-skills/main/install.sh | bash
+  ```
+- **适用场景**：配合 `20-logging-monitoring` 的监控体系，覆盖上架后的运维流程
+
+---
+
+## 本项目 Skills 与社区 Skills 对照表
+
+| 本项目 Skill | 推荐搭配的社区 Skill | 说明 |
+|-------------|-------------------|------|
+| 11-data-persistence | Supabase Postgres Best Practices | 本地存储 + 远程数据库最佳实践 |
+| 12-push-notification | Firebase Cloud Messaging | 推送客户端规范 + 推送服务配置 |
+| 13-testing | Swift Expert | 测试框架 + Swift 高级测试模式 |
+| 14-performance-debug | iOS Agent Skills — Quality Gates | 性能调试 + 自动质量检查 |
+| 15-widget-live-activity | SwiftUI Pro | Widget/Live Activity + SwiftUI 最佳实践 |
+| 16-multimedia | — | 暂无对应社区 Skill |
+| 17-location-maps | — | 暂无对应社区 Skill |
+| 18-security-crypto | Security 全套 | 客户端安全 + 服务端安全 |
+| 19-swiftui-hybrid | SwiftUI Pro | 混合开发 + SwiftUI 最佳实践 |
+| 20-logging-monitoring | iOS Agent Skills — Post Launch | 监控体系 + 上架后运维 |
+
+---
+
 ## 更多资源
 
 | 资源 | 地址 | 说明 |
