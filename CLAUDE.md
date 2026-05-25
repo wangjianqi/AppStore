@@ -4,15 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**AppStore-Guide** is a documentation-only tutorial repository (no buildable code). It contains 10 sections (83 chapters + 9 appendices) guiding developers from zero to publishing an iOS app on the App Store, with an emphasis on AI-driven development workflows.
+**AppStore-Guide** is a documentation-only tutorial repository (no buildable code). It contains 10 sections (142 chapters + 12 appendices) guiding developers from zero to publishing an iOS app on the App Store, with an emphasis on AI-driven development workflows.
 
 The content is written in Chinese and targets mainland China developers specifically (ICP filing, App Store review nuances, etc.).
 
 ## Repository Structure
 
-- `01-环境与工具准备/` through `10-visionOS入门/` — Main tutorial chapters (Markdown files)
+- `01-环境与工具准备/` through `10-多平台开发/` — Main tutorial chapters (Markdown files)
 - `附录/` — Appendices (FAQ, cheat sheets, checklists)
-- `ios-claude-skills/` — 8 reusable Claude Code SKILL.md files for iOS development (UI, camera, CoreML, compliance, architecture, networking, localization, subscriptions)
+- `ios-claude-skills/` — 20 reusable Claude Code SKILL.md files for iOS development
 - `.github/` — Issue/PR templates
 
 There is no build system, test suite, or runnable code. All content is Markdown.
@@ -21,7 +21,7 @@ There is no build system, test suite, or runnable code. All content is Markdown.
 
 ### Content editing
 
-- Files use Markdown with Chinese filenames in `编号-标题.md` format (e.g., `05-AI编程工具全景.md`)
+- Files use Markdown with Chinese filenames in `编号-标题.md` format (e.g., `07-AI编程工具全景.md`)
 - Each chapter should open with a goal statement and close with a summary + navigation links
 - Code examples go in fenced code blocks with language tags
 - Use tables for comparisons, and emoji markers (💡提示, ⚠️警告) for callouts
@@ -39,7 +39,7 @@ Branch prefixes: `fix/`, `feature/`, `improve/`, `translate/`
 
 ### ios-claude-skills directory
 
-Contains 8 Claude Code skill files organized by domain. Each `SKILL.md` has `name` and `description` frontmatter for trigger matching. These are designed to be copied into a project's `.claude/skills/` directory. The skills assume a UIKit + SnapKit + MVVM + SPM + StoreKit 2 stack (not SwiftUI).
+Contains 20 Claude Code skill files organized by domain. Each `SKILL.md` has `name` and `description` frontmatter for trigger matching. These are designed to be copied into a project's `.claude/skills/` directory. The skills assume a UIKit + SnapKit + MVVM + SPM + StoreKit 2 stack (not SwiftUI).
 
 ## Key Technical Context
 
