@@ -17,7 +17,7 @@
 
 ## 📖 简介
 
-**AppStore-Guide** 是一份面向零基础小白的 iOS 开发完整教程，手把手带你从"不知道 Xcode 是什么"到"成功上架 App Store"。整个教程涵盖 **10 大篇 150 章 + 12 个附录**，从环境搭建、语言学习、UI 开发到上架审核、增长变现、多平台开发，形成一条完整的闭环路径。
+**AppStore-Guide** 是一份面向零基础小白的 iOS 开发完整教程，手把手带你从"不知道 Xcode 是什么"到"成功上架 App Store"。整个教程涵盖 **10 大篇 163 章 + 12 个附录**，从环境搭建、语言学习、UI 开发到上架审核、增长变现、多平台开发，形成一条完整的闭环路径。
 
 这不是一份枯燥的技术文档堆砌。本教程全程采用 **AI 驱动开发** 模式——你将学会如何借助 Claude Code、Copilot、Cursor、Trae 等 AI 工具大幅提升开发效率，用 **MCP 协议** 让 AI 直接操作你的工具链，用 **Spec 驱动开发** 方法论让 AI 真正成为你的编程搭档，而不是简单的代码补全工具。
 
@@ -27,7 +27,7 @@
 
 ## ✨ 特色亮点
 
-- 📚 **10 大篇 150 章 + 12 个附录**：从环境准备到增长变现到多平台开发，覆盖 iOS 开发全链路
+- 📚 **10 大篇 163 章 + 12 个附录**：从环境准备到增长变现到多平台开发，覆盖 iOS 开发全链路
 - 🤖 **AI 驱动开发**：Claude Code / Copilot / Cursor / Trae 全流程实战，让 AI 成为你的编程搭档
 - 🔌 **MCP 协议集成**：让 AI 直接操作 Figma、GitHub、数据库等工具，打通全链路
 - 📝 **Spec 驱动开发**：AI 时代的最佳开发实践，用规范驱动高效产出
@@ -90,160 +90,173 @@
 | 29 | [Swift 并发深入：Actor、Sendable 与结构化并发](03-Swift语言基础/Swift并发深入-Actor与Sendable.md) |
 | 30 | [Swift 6 与严格并发迁移](03-Swift语言基础/Swift-6与严格并发迁移.md) |
 | 31 | [Swift 并发迁移实战](03-Swift语言基础/Swift并发迁移实战.md) |
-| 32 | [ARC 与内存管理](03-Swift语言基础/ARC与内存管理.md) |
-| 33 | [Swift 泛型与类型系统深入](03-Swift语言基础/Swift泛型与类型系统深入.md) |
-| 34 | [可选值 Optional 深入](03-Swift语言基础/可选值Optional深入.md) |
-| 35 | [Swift Macros 宏系统](03-Swift语言基础/Swift-Macros宏系统.md) |
-| 36 | [Property Wrappers 与 Result Builder](03-Swift语言基础/Property-Wrappers与Result-Builder.md) |
+| 32 | [错误处理架构](03-Swift语言基础/错误处理架构.md) |
+| 33 | [ARC 与内存管理](03-Swift语言基础/ARC与内存管理.md) |
+| 34 | [Swift 泛型与类型系统深入](03-Swift语言基础/Swift泛型与类型系统深入.md) |
+| 35 | [可选值 Optional 深入](03-Swift语言基础/可选值Optional深入.md) |
+| 36 | [Swift Macros 宏系统](03-Swift语言基础/Swift-Macros宏系统.md) |
+| 37 | [Property Wrappers 与 Result Builder](03-Swift语言基础/Property-Wrappers与Result-Builder.md) |
 
 ### 第四篇：SwiftUI 入门 — 构建你的第一个 App
 
 | 章节 | 标题 |
 |:---:|------|
-| 37 | [SwiftUI 初体验：第一个项目](04-SwiftUI入门/SwiftUI初体验.md) |
-| 38 | [基础组件：文本、图片与按钮](04-SwiftUI入门/基础组件.md) |
-| 39 | [布局系统：VStack / HStack / ZStack](04-SwiftUI入门/布局系统.md) |
-| 40 | [列表与导航](04-SwiftUI入门/列表与导航.md) |
-| 41 | [状态管理：@State 与 @Binding](04-SwiftUI入门/状态管理.md) |
-| 42 | [Xcode Previews 与实时开发](04-SwiftUI入门/Xcode-Previews与实时开发.md) |
-| 43 | [实战①：完成「待办清单」App](04-SwiftUI入门/实战待办清单App.md) |
-| 44 | [App 生命周期与场景管理](04-SwiftUI入门/App生命周期与场景管理.md) |
-| 45 | [表单与输入组件](04-SwiftUI入门/表单与输入组件.md) |
-| 46 | [弹窗与模态展示](04-SwiftUI入门/弹窗与模态展示.md) |
+| 38 | [SwiftUI 初体验：第一个项目](04-SwiftUI入门/SwiftUI初体验.md) |
+| 39 | [基础组件：文本、图片与按钮](04-SwiftUI入门/基础组件.md) |
+| 40 | [布局系统：VStack / HStack / ZStack](04-SwiftUI入门/布局系统.md) |
+| 41 | [列表与导航](04-SwiftUI入门/列表与导航.md) |
+| 42 | [状态管理：@State 与 @Binding](04-SwiftUI入门/状态管理.md) |
+| 43 | [Xcode Previews 与实时开发](04-SwiftUI入门/Xcode-Previews与实时开发.md) |
+| 44 | [实战①：完成「待办清单」App](04-SwiftUI入门/实战待办清单App.md) |
+| 45 | [App 生命周期与场景管理](04-SwiftUI入门/App生命周期与场景管理.md) |
+| 46 | [表单与输入组件](04-SwiftUI入门/表单与输入组件.md) |
+| 47 | [弹窗与模态展示](04-SwiftUI入门/弹窗与模态展示.md) |
 
 ### 第五篇：SwiftUI 进阶 — 让 App 更专业
 
 | 章节 | 标题 |
 |:---:|------|
-| 47 | [自定义组件与样式系统](05-SwiftUI进阶/自定义组件与样式.md) |
-| 48 | [NavigationStack 与 NavigationSplitView 深入](05-SwiftUI进阶/NavigationStack与NavigationSplitView深入.md) |
-| 49 | [数据持久化方案](05-SwiftUI进阶/数据持久化.md) |
-| 50 | [更复杂的状态管理](05-SwiftUI进阶/复杂状态管理.md) |
-| 51 | [网络请求：获取真实数据](05-SwiftUI进阶/网络请求.md) |
-| 52 | [实战②：完成「天气 App」](05-SwiftUI进阶/实战天气App.md) |
-| 53 | [推送通知](05-SwiftUI进阶/推送通知.md) |
-| 54 | [国内推送服务集成](05-SwiftUI进阶/国内推送服务集成.md) |
-| 55 | [WidgetKit 小组件](05-SwiftUI进阶/WidgetKit小组件.md) |
-| 56 | [动画与手势](05-SwiftUI进阶/动画与手势.md) |
-| 57 | [SwiftData 现代数据框架](05-SwiftUI进阶/SwiftData现代数据框架.md) |
-| 58 | [@Observable 与 Observation 框架](05-SwiftUI进阶/Observable与Observation框架.md) |
-| 59 | [Live Activities 与灵动岛](05-SwiftUI进阶/Live-Activities与灵动岛.md) |
-| 60 | [地图与定位](05-SwiftUI进阶/地图与定位.md) |
-| 61 | [App Intents 与 Siri 快捷指令](05-SwiftUI进阶/App-Intents与Siri快捷指令.md) |
-| 62 | [相册与相机](05-SwiftUI进阶/相册与相机.md) |
-| 63 | [Swift Testing 新测试框架](05-SwiftUI进阶/Swift-Testing新测试框架.md) |
-| 64 | [UIKit 与 SwiftUI 互操作](05-SwiftUI进阶/UIKit与SwiftUI互操作.md) |
-| 65 | [Sign in with Apple 与第三方登录](05-SwiftUI进阶/Sign-in-with-Apple与第三方登录.md) |
-| 66 | [国内第三方登录集成](05-SwiftUI进阶/国内第三方登录集成.md) |
-| 67 | [后台任务与多任务](05-SwiftUI进阶/后台任务与多任务.md) |
-| 68 | [Keychain 与数据安全](05-SwiftUI进阶/Keychain与数据安全.md) |
-| 69 | [iPad 适配与多窗口](05-SwiftUI进阶/iPad适配与多窗口.md) |
-| 70 | [Core ML 与设备端 AI](05-SwiftUI进阶/Core-ML与设备端AI.md) |
-| 71 | [CloudKit 与 iCloud 同步](05-SwiftUI进阶/CloudKit与iCloud同步.md) |
-| 72 | [音频与视频处理](05-SwiftUI进阶/音频与视频处理.md) |
-| 73 | [HealthKit 与传感器](05-SwiftUI进阶/HealthKit与传感器.md) |
-| 74 | [深度链接与 Universal Links](05-SwiftUI进阶/深度链接与Universal-Links.md) |
-| 75 | [网络安全与 ATS 配置](05-SwiftUI进阶/网络安全与ATS配置.md) |
-| 76 | [Web 视图与 Safari Services](05-SwiftUI进阶/Web视图与Safari-Services.md) |
-| 77 | [Apple Intelligence 与 Controls API](05-SwiftUI进阶/Apple-Intelligence与Controls-API.md) |
-| 78 | [Core Data 入门（选读）](05-SwiftUI进阶/Core-Data入门选读.md) |
-| 79 | [SwiftData 与 Core Data 迁移](05-SwiftUI进阶/SwiftData与Core-Data迁移.md) |
-| 80 | [SwiftUI Charts 数据可视化](05-SwiftUI进阶/SwiftUI-Charts数据可视化.md) |
-| 81 | [Combine 与响应式编程](05-SwiftUI进阶/Combine与响应式编程.md) |
-| 82 | [SwiftUI 性能优化专题](05-SwiftUI进阶/SwiftUI性能优化专题.md) |
+| 48 | [自定义组件与样式系统](05-SwiftUI进阶/自定义组件与样式.md) |
+| 49 | [NavigationStack 与 NavigationSplitView 深入](05-SwiftUI进阶/NavigationStack与NavigationSplitView深入.md) |
+| 50 | [SwiftUI 自定义布局：Layout 协议](05-SwiftUI进阶/SwiftUI自定义布局Layout协议.md) |
+| 51 | [数据持久化方案](05-SwiftUI进阶/数据持久化.md) |
+| 52 | [更复杂的状态管理](05-SwiftUI进阶/复杂状态管理.md) |
+| 53 | [网络请求：获取真实数据](05-SwiftUI进阶/网络请求.md) |
+| 54 | [网络层架构与离线优先](05-SwiftUI进阶/网络层架构与离线优先.md) |
+| 55 | [实战②：完成「天气 App」](05-SwiftUI进阶/实战天气App.md) |
+| 56 | [推送通知](05-SwiftUI进阶/推送通知.md) |
+| 57 | [国内推送服务集成](05-SwiftUI进阶/国内推送服务集成.md) |
+| 58 | [WidgetKit 小组件](05-SwiftUI进阶/WidgetKit小组件.md) |
+| 59 | [动画与手势](05-SwiftUI进阶/动画与手势.md) |
+| 60 | [SwiftData 现代数据框架](05-SwiftUI进阶/SwiftData现代数据框架.md) |
+| 61 | [@Observable 与 Observation 框架](05-SwiftUI进阶/Observable与Observation框架.md) |
+| 62 | [Live Activities 与灵动岛](05-SwiftUI进阶/Live-Activities与灵动岛.md) |
+| 63 | [地图与定位](05-SwiftUI进阶/地图与定位.md) |
+| 64 | [国内地图 SDK 集成](05-SwiftUI进阶/国内地图SDK集成.md) |
+| 65 | [App Intents 与 Siri 快捷指令](05-SwiftUI进阶/App-Intents与Siri快捷指令.md) |
+| 66 | [相册与相机](05-SwiftUI进阶/相册与相机.md) |
+| 67 | [Swift Testing 新测试框架](05-SwiftUI进阶/Swift-Testing新测试框架.md) |
+| 68 | [UIKit 与 SwiftUI 互操作](05-SwiftUI进阶/UIKit与SwiftUI互操作.md) |
+| 69 | [Sign in with Apple 与第三方登录](05-SwiftUI进阶/Sign-in-with-Apple与第三方登录.md) |
+| 70 | [国内第三方登录集成](05-SwiftUI进阶/国内第三方登录集成.md) |
+| 71 | [App Attest 与 DeviceCheck](05-SwiftUI进阶/App-Attest与DeviceCheck.md) |
+| 72 | [后台任务与多任务](05-SwiftUI进阶/后台任务与多任务.md) |
+| 73 | [Keychain 与数据安全](05-SwiftUI进阶/Keychain与数据安全.md) |
+| 74 | [iPad 适配与多窗口](05-SwiftUI进阶/iPad适配与多窗口.md) |
+| 75 | [Core ML 与设备端 AI](05-SwiftUI进阶/Core-ML与设备端AI.md) |
+| 76 | [CloudKit 与 iCloud 同步](05-SwiftUI进阶/CloudKit与iCloud同步.md) |
+| 77 | [音频与视频处理](05-SwiftUI进阶/音频与视频处理.md) |
+| 78 | [HealthKit 与传感器](05-SwiftUI进阶/HealthKit与传感器.md) |
+| 79 | [深度链接与 Universal Links](05-SwiftUI进阶/深度链接与Universal-Links.md) |
+| 80 | [网络安全与 ATS 配置](05-SwiftUI进阶/网络安全与ATS配置.md) |
+| 81 | [Web 视图与 Safari Services](05-SwiftUI进阶/Web视图与Safari-Services.md) |
+| 82 | [Apple Intelligence 与 Controls API](05-SwiftUI进阶/Apple-Intelligence与Controls-API.md) |
+| 83 | [Core Data 入门（选读）](05-SwiftUI进阶/Core-Data入门选读.md) |
+| 84 | [SwiftData 与 Core Data 迁移](05-SwiftUI进阶/SwiftData与Core-Data迁移.md) |
+| 85 | [SwiftUI Charts 数据可视化](05-SwiftUI进阶/SwiftUI-Charts数据可视化.md) |
+| 86 | [Combine 与响应式编程](05-SwiftUI进阶/Combine与响应式编程.md) |
+| 87 | [SwiftUI 性能优化专题](05-SwiftUI进阶/SwiftUI性能优化专题.md) |
 
 ### 第六篇：项目实战 — 开发你的上架 App
 
 | 章节 | 标题 |
 |:---:|------|
-| 83 | [需求分析与产品设计](06-项目实战/需求分析与产品设计.md) |
-| 84 | [Spec 驱动：编写完整项目 Spec](06-项目实战/Spec驱动编写完整项目Spec.md) |
-| 85 | [UI 设计与原型](06-项目实战/UI设计与原型.md) |
-| 86 | [项目搭建与架构](06-项目实战/项目搭建与架构.md) |
-| 87 | [Xcode 项目配置深入](06-项目实战/Xcode项目配置深入.md) |
-| 88 | [依赖管理与开源库](06-项目实战/依赖管理与开源库.md) |
-| 89 | [核心功能开发（上）](06-项目实战/核心功能开发上.md) |
-| 90 | [核心功能开发（下）](06-项目实战/核心功能开发下.md) |
-| 91 | [测试基础](06-项目实战/测试基础.md) |
-| 92 | [无障碍与国际化](06-项目实战/无障碍与国际化.md) |
-| 93 | [打磨细节：体验优化](06-项目实战/打磨细节体验优化.md) |
-| 94 | [TipKit 引导与新手教学](06-项目实战/TipKit引导与新手教学.md) |
-| 95 | [调试与性能优化](06-项目实战/调试与性能优化.md) |
-| 96 | [Instruments 性能分析实战](06-项目实战/Instruments性能分析实战.md) |
-| 97 | [Xcode Cloud CI/CD](06-项目实战/Xcode-Cloud-CI-CD.md) |
-| 98 | [Fastlane 自动化构建](06-项目实战/Fastlane自动化构建.md) |
-| 99 | [架构模式对比与选型](06-项目实战/架构模式对比与选型.md) |
-| 100 | [Swift Package 开发与发布](06-项目实战/Swift-Package开发与发布.md) |
-| 101 | [代码签名与证书管理深入](06-项目实战/代码签名与证书管理深入.md) |
-| 102 | [第三方分析 SDK 集成](06-项目实战/第三方分析SDK集成.md) |
+| 88 | [需求分析与产品设计](06-项目实战/需求分析与产品设计.md) |
+| 89 | [Spec 驱动：编写完整项目 Spec](06-项目实战/Spec驱动编写完整项目Spec.md) |
+| 90 | [UI 设计与原型](06-项目实战/UI设计与原型.md) |
+| 91 | [项目搭建与架构](06-项目实战/项目搭建与架构.md) |
+| 92 | [Xcode 项目配置深入](06-项目实战/Xcode项目配置深入.md) |
+| 93 | [依赖管理与开源库](06-项目实战/依赖管理与开源库.md) |
+| 94 | [核心功能开发（上）](06-项目实战/核心功能开发上.md) |
+| 95 | [核心功能开发（下）](06-项目实战/核心功能开发下.md) |
+| 96 | [测试基础](06-项目实战/测试基础.md) |
+| 97 | [快照测试与 UI 自动化测试深入](06-项目实战/快照测试与UI自动化测试深入.md) |
+| 98 | [无障碍与国际化](06-项目实战/无障碍与国际化.md) |
+| 99 | [打磨细节：体验优化](06-项目实战/打磨细节体验优化.md) |
+| 100 | [TipKit 引导与新手教学](06-项目实战/TipKit引导与新手教学.md) |
+| 101 | [调试与性能优化](06-项目实战/调试与性能优化.md) |
+| 102 | [日志与可观测性](06-项目实战/日志与可观测性.md) |
+| 103 | [Instruments 性能分析实战](06-项目实战/Instruments性能分析实战.md) |
+| 104 | [SwiftLint 与代码质量工具链](06-项目实战/SwiftLint与代码质量工具链.md) |
+| 105 | [Xcode Cloud CI/CD](06-项目实战/Xcode-Cloud-CI-CD.md) |
+| 106 | [Fastlane 自动化构建](06-项目实战/Fastlane自动化构建.md) |
+| 107 | [架构模式对比与选型](06-项目实战/架构模式对比与选型.md) |
+| 108 | [模块化架构与组件化实战](06-项目实战/模块化架构与组件化实战.md) |
+| 109 | [Swift Package 开发与发布](06-项目实战/Swift-Package开发与发布.md) |
+| 110 | [Swift-DocC 文档生成](06-项目实战/Swift-DocC文档生成.md) |
+| 111 | [代码签名与证书管理深入](06-项目实战/代码签名与证书管理深入.md) |
+| 112 | [Feature Flags 实践](06-项目实战/Feature-Flags实践.md) |
+| 113 | [第三方分析 SDK 集成](06-项目实战/第三方分析SDK集成.md) |
+| 114 | [Server-Side Swift：Vapor 入门](06-项目实战/Server-Side-Swift-Vapor入门.md) |
 
 ### 第七篇：上架准备 — 国内 + 国际双线并行
 
 | 章节 | 标题 |
 |:---:|------|
-| 103 | [国内上架：ICP 备案全流程](07-上架准备/国内上架ICP备案全流程.md) |
-| 104 | [App Store Connect 完整配置](07-上架准备/App-Store-Connect完整配置.md) |
-| 105 | [隐私与权限合规](07-上架准备/隐私与权限合规.md) |
-| 106 | [隐私清单（Privacy Manifest）](07-上架准备/隐私清单Privacy-Manifest.md) |
-| 107 | [隐私政策与用户协议](07-上架准备/隐私政策与用户协议.md) |
-| 108 | [个人信息保护法（PIPL）合规指南](07-上架准备/个人信息保护法PIPL合规指南.md) |
-| 109 | [App 图标与启动页](07-上架准备/App图标与启动页.md) |
-| 110 | [截图与预览素材](07-上架准备/截图与预览素材.md) |
-| 111 | [App 视觉素材设计与 ASO 转化](07-上架准备/App视觉素材设计与ASO转化.md) |
-| 112 | [TestFlight 测试](07-上架准备/TestFlight测试.md) |
-| 113 | [App Clips 轻量版](07-上架准备/App-Clips轻量版.md) |
-| 114 | [App Extension 全景](07-上架准备/App-Extension全景.md) |
-| 115 | [Support 页面与用户支持](07-上架准备/Support页面与用户支持.md) |
-| 116 | [免费部署平台实战](07-上架准备/免费部署平台实战.md) |
-| 117 | [国内域名购买与备案全流程](07-上架准备/国内域名购买与备案全流程.md) |
-| 118 | [国内服务器部署与网站备案](07-上架准备/国内服务器部署与网站备案.md) |
-| 119 | [App 内活动与自定义产品页](07-上架准备/App内活动与自定义产品页.md) |
-| 120 | [App Store Connect API 自动化](07-上架准备/App-Store-Connect-API自动化.md) |
+| 115 | [国内上架：ICP 备案全流程](07-上架准备/国内上架ICP备案全流程.md) |
+| 116 | [App Store Connect 完整配置](07-上架准备/App-Store-Connect完整配置.md) |
+| 117 | [隐私与权限合规](07-上架准备/隐私与权限合规.md) |
+| 118 | [隐私清单（Privacy Manifest）](07-上架准备/隐私清单Privacy-Manifest.md) |
+| 119 | [隐私政策与用户协议](07-上架准备/隐私政策与用户协议.md) |
+| 120 | [个人信息保护法（PIPL）合规指南](07-上架准备/个人信息保护法PIPL合规指南.md) |
+| 121 | [App 图标与启动页](07-上架准备/App图标与启动页.md) |
+| 122 | [截图与预览素材](07-上架准备/截图与预览素材.md) |
+| 123 | [App 视觉素材设计与 ASO 转化](07-上架准备/App视觉素材设计与ASO转化.md) |
+| 124 | [TestFlight 测试](07-上架准备/TestFlight测试.md) |
+| 125 | [App Clips 轻量版](07-上架准备/App-Clips轻量版.md) |
+| 126 | [App Extension 全景](07-上架准备/App-Extension全景.md) |
+| 127 | [Support 页面与用户支持](07-上架准备/Support页面与用户支持.md) |
+| 128 | [免费部署平台实战](07-上架准备/免费部署平台实战.md) |
+| 129 | [国内域名购买与备案全流程](07-上架准备/国内域名购买与备案全流程.md) |
+| 130 | [国内服务器部署与网站备案](07-上架准备/国内服务器部署与网站备案.md) |
+| 131 | [App 内活动与自定义产品页](07-上架准备/App内活动与自定义产品页.md) |
+| 132 | [App Store Connect API 自动化](07-上架准备/App-Store-Connect-API自动化.md) |
 
 ### 第八篇：审核与上架 — 攻坚战
 
 | 章节 | 标题 |
 |:---:|------|
-| 121 | [构建与归档](08-审核与上架/构建与归档.md) |
-| 122 | [提交审核](08-审核与上架/提交审核.md) |
-| 123 | [审核被拒全面应对](08-审核与上架/审核被拒全面应对.md) |
-| 124 | [上架成功！版本迭代](08-审核与上架/上架成功版本迭代.md) |
-| 125 | [崩溃监控与日志收集](08-审核与上架/崩溃监控与日志收集.md) |
-| 126 | [App Thinning 与包大小优化](08-审核与上架/App-Thinning与包大小优化.md) |
-| 127 | [分阶段发布与版本回退](08-审核与上架/分阶段发布与版本回退.md) |
-| 128 | [App 评分与评论管理](08-审核与上架/App评分与评论管理.md) |
+| 133 | [构建与归档](08-审核与上架/构建与归档.md) |
+| 134 | [提交审核](08-审核与上架/提交审核.md) |
+| 135 | [审核被拒全面应对](08-审核与上架/审核被拒全面应对.md) |
+| 136 | [上架成功！版本迭代](08-审核与上架/上架成功版本迭代.md) |
+| 137 | [崩溃监控与日志收集](08-审核与上架/崩溃监控与日志收集.md) |
+| 138 | [App Thinning 与包大小优化](08-审核与上架/App-Thinning与包大小优化.md) |
+| 139 | [分阶段发布与版本回退](08-审核与上架/分阶段发布与版本回退.md) |
+| 140 | [App 评分与评论管理](08-审核与上架/App评分与评论管理.md) |
 
 ### 第九篇：增长与变现
 
 | 章节 | 标题 |
 |:---:|------|
-| 129 | [数据驱动增长](09-增长与变现/数据驱动增长.md) |
-| 130 | [App 数据分析实战](09-增长与变现/App数据分析实战.md) |
-| 131 | [A/B 测试与增长实验](09-增长与变现/AB测试与增长实验.md) |
-| 132 | [用户留存策略](09-增长与变现/用户留存策略.md) |
-| 133 | [推广与用户获取](09-增长与变现/推广与用户获取.md) |
-| 134 | [推广平台与获客渠道实战](09-增长与变现/推广平台与获客渠道实战.md) |
-| 135 | [ASO：App Store 优化详解](09-增长与变现/ASO优化详解.md) |
-| 136 | [变现模式全解析](09-增长与变现/变现模式全解析.md) |
-| 137 | [内购与订阅模式实战](09-增长与变现/内购与订阅模式实战.md) |
-| 138 | [StoreKit 测试与收据验证](09-增长与变现/StoreKit测试与收据验证.md) |
-| 139 | [付费墙与转化设计](09-增长与变现/付费墙与转化设计.md) |
-| 140 | [广告变现全攻略](09-增长与变现/广告变现全攻略.md) |
-| 141 | [国际化方案与多语言发布](09-增长与变现/国际化方案与多语言发布.md) |
-| 142 | [落地页与引导页设计](09-增长与变现/落地页与引导页设计.md) |
-| 143 | [社区运营与用户生态](09-增长与变现/社区运营与用户生态.md) |
-| 144 | [Apple Search Ads 实战](09-增长与变现/Apple-Search-Ads实战.md) |
+| 141 | [数据驱动增长](09-增长与变现/数据驱动增长.md) |
+| 142 | [App 数据分析实战](09-增长与变现/App数据分析实战.md) |
+| 143 | [A/B 测试与增长实验](09-增长与变现/AB测试与增长实验.md) |
+| 144 | [用户留存策略](09-增长与变现/用户留存策略.md) |
+| 145 | [推广与用户获取](09-增长与变现/推广与用户获取.md) |
+| 146 | [推广平台与获客渠道实战](09-增长与变现/推广平台与获客渠道实战.md) |
+| 147 | [ASO：App Store 优化详解](09-增长与变现/ASO优化详解.md) |
+| 148 | [变现模式全解析](09-增长与变现/变现模式全解析.md) |
+| 149 | [内购与订阅模式实战](09-增长与变现/内购与订阅模式实战.md) |
+| 150 | [国内支付 SDK 集成](09-增长与变现/国内支付SDK集成.md) |
+| 151 | [StoreKit 测试与收据验证](09-增长与变现/StoreKit测试与收据验证.md) |
+| 152 | [付费墙与转化设计](09-增长与变现/付费墙与转化设计.md) |
+| 153 | [广告变现全攻略](09-增长与变现/广告变现全攻略.md) |
+| 154 | [国际化方案与多语言发布](09-增长与变现/国际化方案与多语言发布.md) |
+| 155 | [落地页与引导页设计](09-增长与变现/落地页与引导页设计.md) |
+| 156 | [社区运营与用户生态](09-增长与变现/社区运营与用户生态.md) |
+| 157 | [Apple Search Ads 实战](09-增长与变现/Apple-Search-Ads实战.md) |
 
 ### 第十篇：多平台开发 — 跨越 Apple 生态
 
 | 章节 | 标题 |
 |:---:|------|
-| 145 | [visionOS 入门](10-多平台开发/visionOS入门.md) |
-| 146 | [watchOS 快速入门](10-多平台开发/watchOS快速入门.md) |
-| 147 | [Mac Catalyst 与 macOS 移植](10-多平台开发/macCatalyst与macOS移植.md) |
-| 148 | [tvOS 快速入门](10-多平台开发/tvOS快速入门.md) |
-| 149 | [跨平台代码共享策略](10-多平台开发/跨平台代码共享策略.md) |
-| 150 | [watchOS Complications 表盘开发](10-多平台开发/watchOS-Complications表盘开发.md) |
+| 158 | [visionOS 入门](10-多平台开发/visionOS入门.md) |
+| 159 | [watchOS 快速入门](10-多平台开发/watchOS快速入门.md) |
+| 160 | [Mac Catalyst 与 macOS 移植](10-多平台开发/macCatalyst与macOS移植.md) |
+| 161 | [tvOS 快速入门](10-多平台开发/tvOS快速入门.md) |
+| 162 | [跨平台代码共享策略](10-多平台开发/跨平台代码共享策略.md) |
+| 163 | [watchOS Complications 表盘开发](10-多平台开发/watchOS-Complications表盘开发.md) |
 
 ### 附录
 
