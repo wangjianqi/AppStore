@@ -1,0 +1,1178 @@
+# App 数据分析实战
+
+## 本章目标
+
+- 理解为什么 App 开发离不开数据分析，告别"拍脑袋"决策
+- 掌握 AARRR 数据分析框架，建立系统化的分析思维
+- 学会集成 Firebase Analytics，实现事件追踪与用户属性管理
+- 掌握自定义事件的设计规范与参数设计方法
+- 理解关键指标（DAU/MAU、留存率、转化率、ARPU）的定义与追踪方式
+- 学会搭建漏斗分析，定位用户流失环节
+- 了解用户分群方法，实现精细化运营
+- 掌握 Amplitude 作为替代方案的集成与使用
+- 学会搭建数据看板，实现关键指标的自动化监控
+- 理解数据收集的隐私合规要求与用户同意管理
+
+---
+
+## 1. 为什么需要数据分析：从"拍脑袋"到"看数据"决策
+
+### 1.1 一个生活类比
+
+想象你开了一家奶茶店：
+
+- **拍脑袋派**：觉得大家肯定爱喝芝士奶盖，于是大量进货，结果卖不出去，亏了一笔
+- **看数据派**：先小范围试卖，记录每天各品类的销量，发现杨枝甘露才是爆款，于是主推杨枝甘露，生意火爆
+
+App 开发也是一样——你的直觉可能是对的，也可能是错的。**数据不会说谎**，它能帮你验证假设、发现问题、找到增长点。
+
+### 1.2 没有 数据分析的常见困境
+
+| 困境 | 表现 | 数据分析如何解决 |
+|------|------|------------------|
+| 不知道用户在哪儿流失 | "注册的人不少，但用的人不多" | 漏斗分析定位流失环节 |
+| 不知道该优化什么功能 | "感觉这个功能没人用" | 事件追踪量化功能使用率 |
+| 不知道增长从哪来 | "用户突然涨了一波" | 渠道归因分析找到来源 |
+| 不知道该不该做付费 | "不确定用户愿不愿意花钱" | 转化率与 ARPU 评估付费潜力 |
+| 不知道留存好不好 | "好像用户回来挺多" | 留存率曲线给出精确答案 |
+
+### 1.3 数据分析的核心价值
+
+```
+直觉 → 假设 → 数据验证 → 决策 → 行动 → 再验证
+```
+
+> 💡 **关键认知**：数据分析不是替代直觉，而是用数据验证直觉。你的产品感 + 数据分析 = 最佳决策组合。
+
+---
+
+## 2. 数据分析框架：AARRR 模型
+
+### 2.1 AARRR 是什么？
+
+AARRR 又叫"海盗指标"（Pirate Metrics），由 Dave McClure 提出，是 App 增长最经典的分析框架。它把用户生命周期分为五个阶段：
+
+```
+获取(Acquisition) → 激活(Activation) → 留存(Retention) → 推荐(Referral) → 变现(Revenue)
+```
+
+就像谈恋爱：
+
+| AARRR 阶段 | 谈恋爱类比 | App 场景 | 核心问题 |
+|------------|-----------|---------|---------|
+| **获取** | 在哪认识对方的？ | 用户从哪来？App Store？广告？分享链接？ | 渠道效果如何？ |
+| **激活** | 第一次约会感觉如何？ | 用户首次打开 App 的体验好不好？ | 用户有没有完成"啊哈时刻"？ |
+| **留存** | 还会再见面吗？ | 用户会不会再次打开 App？ | 第 1/7/30 天留存率多少？ |
+| **推荐** | 会介绍给朋友吗？ | 用户会不会分享给他人？ | 病毒系数(K-factor)是多少？ |
+| **变现** | 在一起了（结婚） | 用户愿不愿意付费？ | ARPU、付费转化率多少？ |
+
+### 2.2 每个阶段的关键指标
+
+| 阶段 | 关键指标 | 说明 |
+|------|---------|------|
+| 获取 | 下载量、渠道来源、CPI（每次安装成本） | 衡量拉新效率 |
+| 激活 | 激活率、首次操作完成率 | 衡量首次体验质量 |
+| 留存 | 次日/7日/30日留存率 | 衡量产品粘性 |
+| 推荐 | 分享率、邀请数、K-factor | 衡量自传播能力 |
+| 变现 | ARPU、ARPPU、付费转化率、LTV | 衡量变现能力 |
+
+### 2.3 用 AARRR 分析一个真实案例
+
+假设你做了一个记账 App：
+
+```
+获取：每月 10,000 次下载，60% 来自 App Store 搜索，30% 来自广告，10% 来自分享
+激活：8,000 人打开 App，5,000 人完成首次记账 → 激活率 50%
+留存：次日留存 40%，7日留存 20%，30日留存 8%
+推荐：5% 的用户分享给朋友
+变现：2% 付费转化率，ARPU ¥8/月
+```
+
+> ⚠️ **注意**：AARRR 不是线性漏斗，用户可能跳过某些阶段（比如直接付费不推荐），也可能循环（推荐→新用户获取）。
+
+---
+
+## 3. Firebase Analytics 集成
+
+### 3.1 Firebase Analytics 简介
+
+Firebase Analytics 是 Google 提供的免费数据分析工具，专为移动 App 设计，是 iOS 开发者最常用的分析方案之一。
+
+| 特点 | 说明 |
+|------|------|
+| 免费 | 无使用量限制 |
+| 自动事件 | 自动收集首次打开、会话、设备信息等 |
+| 自定义事件 | 支持自定义事件和参数 |
+| 用户属性 | 支持设置用户属性进行分群 |
+| 与 Firebase 生态集成 | 可与 Crashlytics、Cloud Messaging 等联动 |
+| BigQuery 集成 | 可导出原始数据做深度分析 |
+
+### 3.2 安装 Firebase SDK
+
+**第一步：创建 Firebase 项目**
+
+1. 前往 [Firebase Console](https://console.firebase.google.com/)
+2. 点击"添加项目"，输入项目名称
+3. 按照向导完成项目创建
+
+**第二步：添加 iOS 应用**
+
+1. 在 Firebase Console 中点击 iOS 图标
+2. 输入 App 的 Bundle ID（如 `com.example.myapp`）
+3. 下载 `GoogleService-Info.plist` 文件
+
+**第三步：使用 Swift Package Manager 安装**
+
+在 Xcode 中：
+
+```
+File → Add Package Dependencies → 输入：
+https://github.com/firebase/firebase-ios-sdk
+```
+
+选择以下产品：
+- `FirebaseAnalytics`（核心分析）
+- `FirebaseCore`（核心依赖）
+
+**第四步：配置 plist 文件**
+
+将下载的 `GoogleService-Info.plist` 拖入 Xcode 项目根目录，确保勾选"Copy items if needed"。
+
+### 3.3 初始化 Firebase
+
+在 `App` 入口文件中初始化：
+
+```swift
+import SwiftUI
+import FirebaseCore
+
+@main
+struct MyApp: App {
+    init() {
+        FirebaseApp.configure()
+    }
+
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
+```
+
+> 💡 **提示**：`FirebaseApp.configure()` 必须在 App 启动时尽早调用，确保自动事件（如 `first_open`）能正确收集。
+
+### 3.4 事件追踪基础
+
+Firebase 提供两种事件类型：
+
+| 类型 | 说明 | 示例 |
+|------|------|------|
+| 自动收集事件 | 无需代码，SDK 自动收集 | `first_open`、`session_start`、`user_engagement` |
+| 预定义事件 | 需手动调用，但名称和参数已定义 | `purchase`、`login`、`share` |
+| 自定义事件 | 完全自定义名称和参数 | `note_created`、`level_completed` |
+
+**追踪预定义事件示例：**
+
+```swift
+import FirebaseAnalytics
+
+// 用户登录事件
+Analytics.logEvent(AnalyticsEventLogin, parameters: [
+    AnalyticsParameterMethod: "email"
+])
+
+// 用户分享事件
+Analytics.logEvent(AnalyticsEventShare, parameters: [
+    AnalyticsParameterItemType: "photo",
+    AnalyticsParameterItemID: "photo_123"
+])
+
+// 电商购买事件
+Analytics.logEvent(AnalyticsEventPurchase, parameters: [
+    AnalyticsParameterCurrency: "CNY",
+    AnalyticsParameterValue: 29.9,
+    AnalyticsParameterItemID: "premium_monthly"
+])
+```
+
+**追踪自定义事件示例：**
+
+```swift
+// 用户创建了一条记账记录
+Analytics.logEvent("expense_created", parameters: [
+    "category": "food",
+    "amount": 35.5,
+    "payment_method": "wechat"
+])
+
+// 用户完成了一个关卡
+Analytics.logEvent("level_completed", parameters: [
+    "level_name": "level_5",
+    "time_spent_seconds": 120,
+    "score": 850
+])
+```
+
+> ⚠️ **注意**：自定义事件名称最多 40 个字符，只能包含字母、数字和下划线，必须以字母开头。参数名称最多 40 个字符，参数值（字符串）最多 100 个字符。
+
+### 3.5 设置用户属性
+
+用户属性用于描述用户群体的特征，可用于后续分群分析：
+
+```swift
+// 设置用户会员等级
+Analytics.setUserProperty("premium", forName: "membership_level")
+
+// 设置用户偏好语言
+Analytics.setUserProperty("zh_CN", forName: "preferred_language")
+
+// 设置用户注册渠道
+Analytics.setUserProperty("app_store_search", forName: "acquisition_channel")
+```
+
+| 常用用户属性 | 说明 | 示例值 |
+|-------------|------|--------|
+| `membership_level` | 会员等级 | free / premium / vip |
+| `acquisition_channel` | 获客渠道 | organic / ad / referral |
+| `preferred_language` | 偏好语言 | zh_CN / en_US |
+| `account_age_days` | 账号年龄 | 7 / 30 / 365 |
+
+> 💡 **提示**：用户属性是"当前状态"，不是历史记录。比如用户从免费升级为付费，属性会从 `free` 变为 `premium`，不会保留 `free` 的历史。
+
+---
+
+## 4. 自定义事件设计
+
+### 4.1 事件命名规范
+
+好的事件命名就像好的变量命名——一看就懂，不会混淆。
+
+| 规范 | 正确示例 | 错误示例 |
+|------|---------|---------|
+| 使用蛇形命名法（snake_case） | `note_created` | `noteCreated` / `NoteCreated` |
+| 动词+名词结构 | `button_clicked` | `button` / `click` |
+| 名称要有业务含义 | `purchase_completed` | `event_1` / `action` |
+| 避免过度细分 | `article_shared` | `article_shared_to_wechat` / `article_shared_to_weibo` |
+| 不要包含动态值 | `level_completed` | `level_5_completed` / `level_10_completed` |
+
+### 4.2 事件设计原则
+
+**原则一：业务导向，而非技术导向**
+
+```swift
+// ❌ 技术导向：追踪按钮点击
+Analytics.logEvent("button_tapped", parameters: [
+    "button_id": "submit_button_3"
+])
+
+// ✅ 业务导向：追踪用户行为
+Analytics.logEvent("expense_submitted", parameters: [
+    "category": "food",
+    "amount": 35.5
+])
+```
+
+**原则二：参数化可变部分**
+
+```swift
+// ❌ 为每个分类创建不同事件
+Analytics.logEvent("food_expense_created", parameters: nil)
+Analytics.logEvent("transport_expense_created", parameters: nil)
+
+// ✅ 用参数区分分类
+Analytics.logEvent("expense_created", parameters: [
+    "category": "food"  // 或 "transport"
+])
+```
+
+**原则三：追踪结果，而非过程**
+
+```swift
+// ❌ 追踪过程：用户点了购买按钮
+Analytics.logEvent("purchase_button_clicked", parameters: nil)
+
+// ✅ 追踪结果：用户完成了购买
+Analytics.logEvent("purchase_completed", parameters: [
+    "product_id": "premium_monthly",
+    "price": 29.9
+])
+```
+
+### 4.3 一个记账 App 的事件设计示例
+
+| 事件名 | 触发时机 | 参数 |
+|--------|---------|------|
+| `expense_created` | 用户创建一笔支出 | `category`, `amount`, `payment_method` |
+| `income_created` | 用户创建一笔收入 | `source`, `amount` |
+| `budget_set` | 用户设置预算 | `category`, `amount`, `period` |
+| `budget_exceeded` | 支出超过预算 | `category`, `budget_amount`, `actual_amount` |
+| `report_viewed` | 用户查看报表 | `report_type`, `date_range` |
+| `export_completed` | 用户导出数据 | `format`, `date_range` |
+| `premium_subscribed` | 用户订阅会员 | `plan`, `price`, `currency` |
+
+### 4.4 事件设计清单
+
+设计事件时，对照以下清单检查：
+
+- [ ] 事件名称是否使用蛇形命名法？
+- [ ] 事件名称是否表达业务含义？
+- [ ] 可变信息是否放在参数中而非事件名中？
+- [ ] 参数值是否为字符串或数字？
+- [ ] 参数数量是否不超过 25 个？
+- [ ] 是否追踪的是"结果"而非"过程"？
+- [ ] 是否覆盖了 AARRR 各阶段的关键行为？
+
+> ⚠️ **注意**：Firebase 单个 App 最多支持 500 个不同的事件类型，每个事件最多 25 个参数。前期不要过度设计，先追踪核心事件，后续再逐步补充。
+
+---
+
+## 5. 关键指标定义与追踪
+
+### 5.1 DAU / MAU
+
+| 指标 | 全称 | 定义 | 计算方式 |
+|------|------|------|---------|
+| **DAU** | Daily Active Users | 日活跃用户数 | 当天至少打开 App 一次的独立用户数 |
+| **MAU** | Monthly Active Users | 月活跃用户数 | 过去 30 天至少打开 App 一次的独立用户数 |
+| **DAU/MAU** | 粘性比 | 用户粘性 | DAU ÷ MAU × 100% |
+
+**生活类比**：DAU 就像一家餐厅今天来了多少客人，MAU 是这个月来了多少客人。DAU/MAU 比值越高，说明"回头客"越多。
+
+| DAU/MAU 比值 | 含义 | 典型 App |
+|-------------|------|---------|
+| > 50% | 超高粘性 | 微信、抖音 |
+| 20%~50% | 高粘性 | 记账、健身类 |
+| 10%~20% | 中等粘性 | 旅游、电商类 |
+| < 10% | 低粘性 | 工具类、低频需求 |
+
+**Firebase 中查看 DAU/MAU：**
+
+Firebase Console → Analytics → Dashboard，即可看到活跃用户数据。
+
+### 5.2 留存率
+
+留存率是衡量产品粘性最重要的指标。
+
+| 留存类型 | 定义 | 计算方式 |
+|---------|------|---------|
+| 次日留存 | 新用户第 2 天还回来的比例 | 第 2 天回访用户 ÷ 第 1 天新用户 × 100% |
+| 7 日留存 | 新用户第 7 天还回来的比例 | 第 7 天回访用户 ÷ 第 1 天新用户 × 100% |
+| 30 日留存 | 新用户第 30 天还回来的比例 | 第 30 天回访用户 ÷ 第 1 天新用户 × 100% |
+
+**留存率的行业基准（仅供参考）：**
+
+| 留存类型 | 优秀 | 良好 | 一般 | 较差 |
+|---------|------|------|------|------|
+| 次日留存 | > 50% | 35%~50% | 20%~35% | < 20% |
+| 7 日留存 | > 30% | 20%~30% | 10%~20% | < 10% |
+| 30 日留存 | > 15% | 10%~15% | 5%~10% | < 5% |
+
+**用 Firebase 追踪留存：**
+
+Firebase Console → Analytics → Retention，可查看按日/周的留存曲线。
+
+### 5.3 转化率
+
+转化率 = 完成目标行为的用户 ÷ 触达该环节的用户 × 100%
+
+| 转化类型 | 定义 | 示例 |
+|---------|------|------|
+| 注册转化率 | 完成注册 ÷ 打开注册页 | 1000 人打开注册页，600 人完成 → 60% |
+| 付费转化率 | 完成付费 ÷ 活跃用户 | 10000 活跃用户，200 人付费 → 2% |
+| 功能转化率 | 使用某功能 ÷ 看到入口的用户 | 5000 人看到入口，500 人使用 → 10% |
+
+```swift
+// 追踪注册漏斗各环节
+Analytics.logEvent("registration_page_viewed", parameters: nil)
+Analytics.logEvent("registration_form_started", parameters: ["method": "email"])
+Analytics.logEvent("registration_completed", parameters: ["method": "email"])
+```
+
+### 5.4 ARPU / ARPPU / LTV
+
+| 指标 | 全称 | 定义 | 计算方式 |
+|------|------|------|---------|
+| **ARPU** | Average Revenue Per User | 每用户平均收入 | 总收入 ÷ 总活跃用户数 |
+| **ARPPU** | Average Revenue Per Paying User | 每付费用户平均收入 | 总收入 ÷ 总付费用户数 |
+| **LTV** | Life Time Value | 用户生命周期价值 | ARPU × 用户平均生命周期 |
+
+**举例：**
+
+```
+某月总收入：¥100,000
+活跃用户数：50,000
+付费用户数：1,000
+用户平均使用月数：6 个月
+
+ARPU = 100,000 ÷ 50,000 = ¥2/月
+ARPPU = 100,000 ÷ 1,000 = ¥100/月
+LTV = ¥2 × 6 = ¥12
+```
+
+> 💡 **核心公式**：只要 LTV > CAC（获客成本），你的 App 就是健康的。一般要求 LTV / CAC > 3。
+
+---
+
+## 6. 漏斗分析
+
+### 6.1 什么是漏斗分析？
+
+漏斗分析就像观察水从漏斗上端流到下端——每一层都会流失一些水，你要找出哪一层流失最多。
+
+```
+    ┌─────────┐  1000 人打开 App
+    │  打开App  │
+    ├─────────┤
+    │  浏览商品  │  700 人浏览商品（流失 30%）
+    ├─────────┤
+    │  加入购物车 │  300 人加入购物车（流失 57%）
+    ├─────────┤
+    │  发起支付  │  150 人发起支付（流失 50%）
+    ├─────────┤
+    │  支付成功  │  120 人支付成功（流失 20%）
+    └─────────┘
+```
+
+### 6.2 注册漏斗
+
+```swift
+// 注册漏斗各步骤的事件追踪
+enum RegistrationStep: String {
+    case pageViewed = "registration_page_viewed"
+    case formStarted = "registration_form_started"
+    case emailSubmitted = "registration_email_submitted"
+    case verificationSent = "registration_verification_sent"
+    case verificationCompleted = "registration_verification_completed"
+    case profileCreated = "registration_profile_created"
+}
+
+func trackRegistrationStep(_ step: RegistrationStep, method: String) {
+    Analytics.logEvent(step.rawValue, parameters: [
+        "method": method
+    ])
+}
+```
+
+**注册漏斗分析示例：**
+
+| 步骤 | 事件 | 用户数 | 转化率 | 流失率 |
+|------|------|--------|--------|--------|
+| 1. 打开注册页 | `registration_page_viewed` | 1000 | 100% | - |
+| 2. 开始填表 | `registration_form_started` | 750 | 75% | 25% |
+| 3. 提交邮箱 | `registration_email_submitted` | 500 | 67% | 33% |
+| 4. 验证码发送 | `registration_verification_sent` | 480 | 96% | 4% |
+| 5. 验证完成 | `registration_verification_completed` | 350 | 73% | 27% |
+| 6. 创建资料 | `registration_profile_created` | 300 | 86% | 14% |
+
+> ⚠️ **关键发现**：步骤 2→3 流失 33%，说明填表环节可能太复杂，需要优化表单设计。
+
+### 6.3 付费漏斗
+
+```swift
+// 付费漏斗各步骤的事件追踪
+func trackPurchaseFunnel(step: String, productID: String? = nil, price: Double? = nil) {
+    var params: [String: Any] = ["step": step]
+    if let productID = productID { params["product_id"] = productID }
+    if let price = price { params["price"] = price }
+    Analytics.logEvent("purchase_funnel", parameters: params)
+}
+
+// 使用示例
+trackPurchaseFunnel(step: "paywall_viewed", productID: "premium_monthly")
+trackPurchaseFunnel(step: "plan_selected", productID: "premium_monthly", price: 29.9)
+trackPurchaseFunnel(step: "payment_initiated", productID: "premium_monthly", price: 29.9)
+trackPurchaseFunnel(step: "payment_completed", productID: "premium_monthly", price: 29.9)
+```
+
+**付费漏斗分析示例：**
+
+| 步骤 | 用户数 | 转化率 | 优化方向 |
+|------|--------|--------|---------|
+| 看到付费墙 | 10000 | 100% | - |
+| 选择套餐 | 1500 | 15% | 优化付费墙设计、突出价值 |
+| 发起支付 | 800 | 53% | 简化支付流程 |
+| 支付成功 | 600 | 75% | 减少支付失败（重试机制） |
+
+### 6.4 功能使用漏斗
+
+追踪用户从"发现功能"到"深度使用"的过程：
+
+```swift
+// 功能使用漏斗
+Analytics.logEvent("feature_discovered", parameters: ["feature": "budget"])
+Analytics.logEvent("feature_activated", parameters: ["feature": "budget"])
+Analytics.logEvent("feature_reused", parameters: ["feature": "budget", "reuse_count": 2])
+Analytics.logEvent("feature_habit_formed", parameters: ["feature": "budget", "days_used": 7])
+```
+
+> 💡 **提示**：漏斗分析的关键不是看总转化率，而是看**哪一步流失最多**，然后集中精力优化那一步。
+
+---
+
+## 7. 用户分群
+
+### 7.1 为什么要分群？
+
+就像老师不会用同一套教学方法教所有学生一样，你也不应该对所有用户用同一套运营策略。
+
+**不分群的后果：**
+
+- 给从未付费的用户推送"续费优惠" → 浪费资源
+- 给资深用户推送"新手引导" → 体验差
+- 给活跃用户和流失用户发同样的消息 → 都不买账
+
+### 7.2 常见用户分群
+
+| 分群 | 定义 | 运营策略 | 关键指标 |
+|------|------|---------|---------|
+| **新用户** | 注册 < 7 天 | 新手引导、教程、首单优惠 | 激活率、次日留存 |
+| **活跃用户** | 近 7 天内使用 ≥ 3 次 | 深度功能推荐、社区互动 | DAU、使用时长 |
+| **付费用户** | 有过付费行为 | 会员权益、专属服务 | ARPPU、续费率 |
+| **流失用户** | 30 天内未使用 | 召回推送、优惠激励 | 召回率、回流后留存 |
+
+### 7.3 用 Firebase 实现用户分群
+
+**方法一：通过用户属性分群**
+
+```swift
+// 在用户状态变化时更新属性
+func updateUserSegment(daysSinceInstall: Int, isActive: Bool, hasPaid: Bool) {
+    // 新用户 vs 老用户
+    let userAge = daysSinceInstall < 7 ? "new" : "established"
+    Analytics.setUserProperty(userAge, forName: "user_age_segment")
+
+    // 活跃 vs 不活跃
+    let activityStatus = isActive ? "active" : "inactive"
+    Analytics.setUserProperty(activityStatus, forName: "activity_status")
+
+    // 付费 vs 免费
+    let paymentStatus = hasPaid ? "paying" : "free"
+    Analytics.setUserProperty(paymentStatus, forName: "payment_status")
+}
+```
+
+**方法二：通过受众群体（Audiences）分群**
+
+在 Firebase Console 中创建受众群体：
+
+1. 进入 Firebase Console → Analytics → Audiences
+2. 点击"新建受众群体"
+3. 设置条件，例如：
+   - 付费用户：`user_property(payment_status) = paying`
+   - 流失用户：`user_engagement` 最近 30 天 = 0
+   - 高价值用户：`purchase` 事件 参数 `value > 100`
+
+### 7.4 用户分群实战代码
+
+```swift
+final class UserSegmentManager {
+    static let shared = UserSegmentManager()
+
+    private let defaults = UserDefaults.standard
+
+    private enum Keys {
+        static let installDate = "install_date"
+        static let lastActiveDate = "last_active_date"
+        static let totalPayments = "total_payments"
+        static let totalSpent = "total_spent"
+    }
+
+    var daysSinceInstall: Int {
+        guard let installDate = defaults.object(forKey: Keys.installDate) as? Date else {
+            let now = Date()
+            defaults.set(now, forKey: Keys.installDate)
+            return 0
+        }
+        return Calendar.current.dateComponents([.day], from: installDate, to: Date()).day ?? 0
+    }
+
+    var isRecentActive: Bool {
+        guard let lastActive = defaults.object(forKey: Keys.lastActiveDate) as? Date else {
+            return false
+        }
+        let daysSinceActive = Calendar.current.dateComponents([.day], from: lastActive, to: Date()).day ?? 999
+        return daysSinceActive <= 7
+    }
+
+    var isPayingUser: Bool {
+        defaults.double(forKey: Keys.totalSpent) > 0
+    }
+
+    func recordActivity() {
+        defaults.set(Date(), forKey: Keys.lastActiveDate)
+        syncSegmentToFirebase()
+    }
+
+    func recordPayment(amount: Double) {
+        let currentTotal = defaults.double(forKey: Keys.totalSpent)
+        defaults.set(currentTotal + amount, forKey: Keys.totalSpent)
+        let currentCount = defaults.integer(forKey: Keys.totalPayments)
+        defaults.set(currentCount + 1, forKey: Keys.totalPayments)
+        syncSegmentToFirebase()
+    }
+
+    private func syncSegmentToFirebase() {
+        let ageSegment = daysSinceInstall < 7 ? "new" : "established"
+        Analytics.setUserProperty(ageSegment, forName: "user_age_segment")
+
+        let activityStatus = isRecentActive ? "active" : "inactive"
+        Analytics.setUserProperty(activityStatus, forName: "activity_status")
+
+        let paymentStatus = isPayingUser ? "paying" : "free"
+        Analytics.setUserProperty(paymentStatus, forName: "payment_status")
+    }
+}
+```
+
+> 💡 **提示**：分群的粒度要适中——太粗（只分"新/老"）看不出差异，太细（分 20 个群）数据量不够没统计意义。一般 4~8 个分群最实用。
+
+---
+
+## 8. Amplitude 集成（替代方案）
+
+### 8.1 为什么考虑 Amplitude？
+
+| 对比项 | Firebase Analytics | Amplitude |
+|--------|-------------------|-----------|
+| 价格 | 免费 | 免费版有限制，付费版较贵 |
+| 事件分析 | 基础 | 强大（路径分析、归因分析等） |
+| 漏斗分析 | 基础 | 高级（支持时间窗口、细分） |
+| 用户分群 | 受众群体 | 行为分群更灵活 |
+| 数据导出 | BigQuery（需付费） | CSV 导出、API |
+| 实时性 | 延迟约 24 小时 | 近实时 |
+| 学习曲线 | 低 | 中等 |
+
+> 💡 **建议**：如果你刚开始做数据分析，先用 Firebase（免费且够用）；当你需要更深入的行为分析时，再考虑 Amplitude。
+
+### 8.2 安装 Amplitude SDK
+
+**使用 Swift Package Manager：**
+
+```
+File → Add Package Dependencies → 输入：
+https://github.com/amplitude/Amplitude-Swift
+```
+
+### 8.3 初始化 Amplitude
+
+```swift
+import Amplitude
+
+@main
+struct MyApp: App {
+    init() {
+        let amplitude = Amplitude(configuration: Configuration(
+            apiKey: "your-api-key-here"
+        ))
+        Amplitude.instance = amplitude
+    }
+
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
+```
+
+### 8.4 事件追踪
+
+```swift
+// 追踪事件
+Amplitude.instance.track(eventType: "expense_created", eventProperties: [
+    "category": "food",
+    "amount": 35.5,
+    "payment_method": "wechat"
+])
+
+// 设置用户属性
+Amplitude.instance.setUserProperty("membership_level", value: "premium")
+
+// 一次性设置多个用户属性
+Amplitude.instance.setUserProperties([
+    "membership_level": "premium",
+    "acquisition_channel": "app_store_search",
+    "preferred_language": "zh_CN"
+])
+```
+
+### 8.5 Amplitude 分析面板
+
+| 分析功能 | 说明 | 使用场景 |
+|---------|------|---------|
+| **Event Segmentation** | 事件趋势分析 | 查看某事件随时间的变化 |
+| **Funnel Analysis** | 漏斗分析 | 分析注册/付费转化 |
+| **Retention Analysis** | 留存分析 | 查看用户留存曲线 |
+| **User Paths** | 用户路径 | 查看用户行为序列 |
+| **Cohort Analysis** | 分群分析 | 对比不同用户群体 |
+| **Impact Analysis** | 影响分析 | 某行为对留存/转化的影响 |
+
+### 8.6 Firebase + Amplitude 双打方案
+
+如果你同时需要 Firebase 的生态和 Amplitude 的分析能力，可以同时集成两者：
+
+```swift
+final class AnalyticsManager {
+    static let shared = AnalyticsManager()
+
+    func logEvent(_ name: String, parameters: [String: Any]? = nil) {
+        // 同时发送到 Firebase
+        Analytics.logEvent(name, parameters: parameters)
+
+        // 同时发送到 Amplitude
+        Amplitude.instance.track(eventType: name, eventProperties: parameters)
+    }
+
+    func setUserProperty(_ value: String, forName name: String) {
+        Analytics.setUserProperty(value, forName: name)
+        Amplitude.instance.setUserProperty(name, value: value)
+    }
+}
+```
+
+> ⚠️ **注意**：双打方案会增加网络请求量和 App 体积，请根据实际需求决定是否需要同时使用两个平台。
+
+---
+
+## 9. 数据看板搭建
+
+### 9.1 为什么需要数据看板？
+
+数据看板就像汽车的仪表盘——你不可能每次开车都打开引擎盖检查，你需要一眼看到速度、油量、发动机状态。
+
+| 不用看板 | 用看板 |
+|---------|--------|
+| 每次手动查数据，费时费力 | 打开即看，一目了然 |
+| 容易遗漏异常指标 | 异常自动告警 |
+| 团队成员看不到同一份数据 | 统一数据源，对齐认知 |
+| 只能事后分析 | 实时监控，快速响应 |
+
+### 9.2 关键指标仪表盘
+
+**第一层：北极星指标（1 个）**
+
+北极星指标是衡量产品价值的最核心指标，所有团队围绕它努力。
+
+| App 类型 | 北极星指标示例 |
+|---------|-------------|
+| 记账 App | 每日记账用户数 |
+| 健身 App | 每周锻炼次数 |
+| 社交 App | 日发送消息数 |
+| 工具 App | 日使用时长 |
+
+**第二层：AARRR 各阶段指标（5~8 个）**
+
+| 阶段 | 看板指标 |
+|------|---------|
+| 获取 | 日新增下载量、渠道分布 |
+| 激活 | 新用户激活率 |
+| 留存 | 次日/7日/30日留存率 |
+| 推荐 | 分享率、邀请数 |
+| 变现 | 付费转化率、ARPU |
+
+**第三层：细分指标（按需）**
+
+| 细分维度 | 示例 |
+|---------|------|
+| 按渠道 | 各渠道的留存率、付费率 |
+| 按版本 | 各版本的崩溃率、功能使用率 |
+| 按设备 | iPhone vs iPad 使用差异 |
+| 按地区 | 各地区活跃度差异 |
+
+### 9.3 Firebase Dashboard 配置
+
+Firebase Console 提供了自定义 Dashboard 功能：
+
+1. 进入 Firebase Console → Analytics → Dashboard
+2. 点击"自定义卡片"
+3. 选择要展示的指标卡片
+4. 拖拽调整卡片顺序
+
+**推荐配置的卡片：**
+
+- 活跃用户趋势（DAU/MAU）
+- 用户留存曲线
+- 事件计数 Top 10
+- 用户属性分布
+- 设备与地区分布
+
+### 9.4 日报/周报自动化
+
+**方案一：Firebase + Cloud Functions 自动发邮件**
+
+```swift
+// 这不是 iOS 代码，而是 Cloud Functions (Node.js) 代码
+// 部署到 Firebase Cloud Functions 即可
+
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+const nodemailer = require('nodemailer');
+
+admin.initializeApp();
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'your-email@gmail.com',
+        pass: 'your-app-password'
+    }
+});
+
+exports.sendDailyReport = functions.pubsub
+    .schedule('every day 09:00')
+    .timeZone('Asia/Shanghai')
+    .onRun(async (context) => {
+        // 从 BigQuery 查询数据
+        const query = `
+            SELECT
+                COUNT(DISTINCT user_id) as dau,
+                COUNT(DISTINCT CASE WHEN event_name = 'purchase_completed' THEN user_id END) as paying_users
+            FROM analytics_events
+            WHERE event_date = CURRENT_DATE() - 1
+        `;
+
+        const [rows] = await bigquery.query({ query });
+
+        const dau = rows[0].dau;
+        const payingUsers = rows[0].paying_users;
+
+        const mailOptions = {
+            from: 'your-email@gmail.com',
+            to: 'team@company.com',
+            subject: `📊 App 日报 - DAU: ${dau}`,
+            html: `
+                <h2>App 每日数据报告</h2>
+                <table border="1" cellpadding="8">
+                    <tr><td>DAU</td><td>${dau}</td></tr>
+                    <tr><td>付费用户</td><td>${payingUsers}</td></tr>
+                </table>
+            `
+        };
+
+        await transporter.sendMail(mailOptions);
+    });
+```
+
+**方案二：使用 Amplitude 的 Report 功能**
+
+Amplitude 内置了报告功能：
+
+1. 创建你想要的图表
+2. 点击"Save" → "Add to Report"
+3. 设置定时发送（每天/每周）
+4. 输入收件人邮箱
+
+**方案三：轻量级方案——快捷指令 + 简单脚本**
+
+如果团队小、预算少，可以用最简单的方式：
+
+```swift
+// 在 App 中添加一个隐藏的"数据概览"页面
+// 仅内部团队可见，展示核心指标
+
+struct DataOverviewView: View {
+    @State private var dau: Int = 0
+    @State private var newUsers: Int = 0
+    @State private var retention1Day: Double = 0
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("数据概览")
+                .font(.title)
+                .bold()
+
+            HStack(spacing: 30) {
+                MetricCard(title: "DAU", value: "\(dau)")
+                MetricCard(title: "新用户", value: "\(newUsers)")
+                MetricCard(title: "次日留存", value: String(format: "%.1f%%", retention1Day * 100))
+            }
+        }
+        .padding()
+        .onAppear {
+            loadMetrics()
+        }
+    }
+
+    private func loadMetrics() {
+        // 从你的后端 API 获取数据
+    }
+}
+
+struct MetricCard: View {
+    let title: String
+    let value: String
+
+    var body: some View {
+        VStack {
+            Text(value)
+                .font(.title2)
+                .bold()
+            Text(title)
+                .font(.caption)
+                .foregroundColor(.secondary)
+        }
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(12)
+    }
+}
+```
+
+> 💡 **提示**：日报不需要面面俱到，3~5 个核心指标就够了。周报可以更详细，包含趋势分析和异常说明。
+
+---
+
+## 10. 隐私合规
+
+### 10.1 为什么隐私合规很重要？
+
+2024 年以来，全球隐私法规越来越严格。不合规的后果：
+
+| 后果 | 示例 |
+|------|------|
+| App 被下架 | App Store 审核拒绝/下架 |
+| 巨额罚款 | GDPR 最高罚 2000 万欧元或全球营收 4% |
+| 用户信任崩塌 | 隐私丑闻导致大量用户流失 |
+| 法律诉讼 | 用户集体诉讼 |
+
+### 10.2 App Store 隐私要求
+
+**App Tracking Transparency (ATT)：**
+
+从 iOS 14.5 开始，App 必须获得用户明确授权才能追踪其跨 App/网站的活动。
+
+```swift
+import AppTrackingTransparency
+import AdSupport
+
+func requestTrackingPermission() {
+    ATTrackingManager.requestTrackingAuthorization { status in
+        switch status {
+        case .authorized:
+            // 用户同意追踪
+            let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+            Analytics.setUserProperty(idfa, forName: "idfa")
+        case .denied, .restricted, .notDetermined:
+            // 用户拒绝或未决定
+            Analytics.setUserProperty("not_available", forName: "idfa")
+        @unknown default:
+            break
+        }
+    }
+}
+```
+
+**在 Info.plist 中添加描述：**
+
+```xml
+<key>NSUserTrackingUsageDescription</key>
+<string>我们希望追踪您的活动以提供更个性化的体验和更相关的广告。</string>
+```
+
+> ⚠️ **注意**：不要在用户刚打开 App 就弹出 ATT 授权，先让用户体验到 App 价值后再请求，授权率会高很多。
+
+### 10.3 App Privacy Nutrition Label
+
+App Store 要求开发者声明数据收集情况。你需要在 App Store Connect 中填写"App 隐私"详情：
+
+| 数据类型 | 是否收集 | 用途 | 是否关联用户身份 |
+|---------|---------|------|----------------|
+| 位置信息 | ✅ | 提供本地天气 | 是 |
+| 标识符（IDFA） | ✅ | 广告归因 | 是 |
+| 使用数据 | ✅ | 分析改进 | 否 |
+| 购买记录 | ✅ | 提供服务 | 是 |
+| 联系人 | ❌ | - | - |
+
+### 10.4 Firebase Analytics 的隐私配置
+
+```swift
+// 在 Info.plist 中禁用自动数据收集（按需开启）
+// FirebaseAnalyticsAutomaticScreenReportingEnabled = NO
+// FirebaseAnalyticsDefaultAllowAnalyticsDataStorage = NO
+
+// 运行时控制数据收集
+func setAnalyticsCollectionEnabled(_ enabled: Bool) {
+    Analytics.setAnalyticsCollectionEnabled(enabled)
+}
+
+// 用户撤回同意时禁用收集
+func handleUserOptOut() {
+    Analytics.setAnalyticsCollectionEnabled(false)
+    // 同时删除已收集的用户级数据
+}
+```
+
+### 10.5 用户同意管理最佳实践
+
+**分层同意方案：**
+
+```swift
+enum ConsentLevel {
+    case essential      // 必要数据（崩溃日志等）
+    case analytics      // 分析数据（事件追踪等）
+    case personalization // 个性化数据（推荐等）
+    case advertising    // 广告数据（IDFA 等）
+}
+
+final class ConsentManager {
+    static let shared = ConsentManager()
+    private let defaults = UserDefaults.standard
+
+    private enum Keys {
+        static let consentEssential = "consent_essential"
+        static let consentAnalytics = "consent_analytics"
+        static let consentPersonalization = "consent_personalization"
+        static let consentAdvertising = "consent_advertising"
+    }
+
+    func grantConsent(for level: ConsentLevel) {
+        let key = keyForLevel(level)
+        defaults.set(true, forKey: key)
+        applyConsent()
+    }
+
+    func revokeConsent(for level: ConsentLevel) {
+        let key = keyForLevel(level)
+        defaults.set(false, forKey: key)
+        applyConsent()
+    }
+
+    func hasConsent(for level: ConsentLevel) -> Bool {
+        let key = keyForLevel(level)
+        return defaults.bool(forKey: key)
+    }
+
+    private func applyConsent() {
+        // 根据同意状态控制数据收集
+        Analytics.setAnalyticsCollectionEnabled(hasConsent(for: .analytics))
+
+        if hasConsent(for: .advertising) {
+            requestTrackingPermission()
+        }
+    }
+
+    private func keyForLevel(_ level: ConsentLevel) -> String {
+        switch level {
+        case .essential: return Keys.consentEssential
+        case .analytics: return Keys.consentAnalytics
+        case .personalization: return Keys.consentPersonalization
+        case .advertising: return Keys.consentAdvertising
+        }
+    }
+}
+```
+
+**同意界面示例：**
+
+```swift
+struct ConsentView: View {
+    @State private var analyticsConsent = false
+    @State private var advertisingConsent = false
+
+    var body: some View {
+        VStack(spacing: 24) {
+            Text("数据使用偏好")
+                .font(.title2)
+                .bold()
+
+            Text("我们重视您的隐私，请选择您允许的数据使用方式：")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+
+            VStack(spacing: 16) {
+                ConsentToggle(
+                    title: "使用数据分析",
+                    description: "帮助我们了解 App 使用情况，改进产品体验",
+                    isOn: $analyticsConsent
+                )
+
+                ConsentToggle(
+                    title: "个性化广告",
+                    description: "允许追踪以展示更相关的广告内容",
+                    isOn: $advertisingConsent
+                )
+            }
+
+            Button("确认") {
+                if analyticsConsent {
+                    ConsentManager.shared.grantConsent(for: .analytics)
+                } else {
+                    ConsentManager.shared.revokeConsent(for: .analytics)
+                }
+
+                if advertisingConsent {
+                    ConsentManager.shared.grantConsent(for: .advertising)
+                } else {
+                    ConsentManager.shared.revokeConsent(for: .advertising)
+                }
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .padding()
+    }
+}
+
+struct ConsentToggle: View {
+    let title: String
+    let description: String
+    @Binding var isOn: Bool
+
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title)
+                    .font(.headline)
+                Text(description)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            Spacer()
+            Toggle("", isOn: $isOn)
+                .labelsHidden()
+        }
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(12)
+    }
+}
+```
+
+### 10.6 隐私合规清单
+
+- [ ] Info.plist 中添加所有隐私描述（`NSUserTrackingUsageDescription` 等）
+- [ ] 实现 ATT 授权请求（如需追踪 IDFA）
+- [ ] App Store Connect 中填写 App Privacy Nutrition Label
+- [ ] 提供用户同意管理界面
+- [ ] 允许用户随时撤回同意
+- [ ] 仅收集必要的数据
+- [ ] 数据传输使用 HTTPS 加密
+- [ ] 本地存储的敏感数据使用 Keychain
+- [ ] 定期审查数据收集范围，删除不再需要的数据
+- [ ] 如面向欧洲用户，需遵守 GDPR；面向中国用户，需遵守《个人信息保护法》
+
+> ⚠️ **重要**：隐私合规不是一次性工作，而是持续的责任。法规在变，App 也在变，需要定期审查和更新。
+
+---
+
+## 小结
+
+本章我们学习了 App 数据分析的完整实战流程：
+
+1. **为什么需要数据分析**——告别"拍脑袋"，用数据驱动决策
+2. **AARRR 模型**——从获取到变现的系统化分析框架
+3. **Firebase Analytics 集成**——安装 SDK、初始化、事件追踪
+4. **自定义事件设计**——命名规范、参数设计、用户属性
+5. **关键指标**——DAU/MAU、留存率、转化率、ARPU/LTV
+6. **漏斗分析**——定位用户流失环节，优化转化
+7. **用户分群**——精细化运营，不同用户不同策略
+8. **Amplitude 集成**——更强大的行为分析替代方案
+9. **数据看板**——核心指标一目了然，日报/周报自动化
+10. **隐私合规**——合法合规地收集和使用数据
+
+**核心心法**：数据分析不是目的，而是手段。一切分析都应服务于"做出更好的决策"和"为用户创造更大价值"这两个目标。先从最基础的 3~5 个事件和 2~3 个指标开始，逐步完善，不要试图一步到位。
+
+> 💡 **下一步行动**：选择一个你正在开发的 App，按照 AARRR 框架列出需要追踪的事件和指标，然后集成 Firebase Analytics 开始收集数据。记住：**先有数据，再做分析；先做分析，再做决策。**
+
+← [数据驱动增长](./数据驱动增长.md) | [A/B 测试与增长实验](./AB测试与增长实验.md) →

@@ -21,7 +21,7 @@ There is no build system, test suite, or runnable code. All content is Markdown.
 
 ### Content editing
 
-- Files use Markdown with Chinese filenames in `编号-标题.md` format (e.g., `07-AI编程工具全景.md`)
+- Files use Markdown with Chinese filenames in `标题.md` format (e.g., `AI编程工具全景.md`). Chapter order is defined by README.md table.
 - Each chapter should open with a goal statement and close with a summary + navigation links
 - Code examples go in fenced code blocks with language tags
 - Use tables for comparisons, and emoji markers (💡提示, ⚠️警告) for callouts
