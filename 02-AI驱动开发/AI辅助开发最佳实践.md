@@ -792,6 +792,145 @@ src/
 
 ---
 
+## iOS/Swift 专项 Prompt 库
+
+通用 Prompt 技巧适用于所有编程语言，但 iOS 开发有其独特的领域知识。以下 Prompt 模板专门针对 iOS/Swift 开发场景优化，可以直接复制使用。
+
+### SwiftUI 布局 Prompt 模板
+
+```
+请用 SwiftUI 实现以下布局：
+
+[描述你想要的界面]
+
+要求：
+- 使用 iOS 17+ API
+- 遵循 Apple Human Interface Guidelines
+- 支持动态字体（Dynamic Type）
+- 支持深色模式
+- 适配 iPhone 和 iPad
+- 使用 LazyVStack/LazyHStack 优化长列表性能
+- 所有文字使用 Localizable 字符串
+```
+
+### Swift 并发 Prompt 模板
+
+```
+请用 Swift Concurrency（async/await）实现以下功能：
+
+[描述异步需求]
+
+要求：
+- 正确处理 Task 取消（Task.isCancelled / try Task.checkCancellation）
+- 使用 Actor 保护共享状态
+- 确保所有 Sendable 一致性
+- 添加超时处理
+- 错误使用自定义 Error 枚举
+- 避免在 MainActor 上执行耗时操作
+```
+
+### StoreKit 2 / 内购 Prompt 模板
+
+```
+请用 StoreKit 2 实现以下内购功能：
+
+[描述内购需求]
+
+要求：
+- 使用 Product.products(for:) 加载商品
+- 使用 PurchaseResult 处理购买结果
+- 处理 Transaction 监听（Transaction.updates）
+- 实现恢复购买功能
+- 处理 App Store 服务器通知
+- 添加购买失败和退款的 UI 提示
+- 遵循 App Store 审核指南 3.1.1
+```
+
+### Core Data / SwiftData Prompt 模板
+
+```
+请用 SwiftData（或 Core Data）实现以下数据持久化功能：
+
+[描述数据需求]
+
+要求：
+- 定义 @Model 数据模型（SwiftData）/ NSManagedObject 子类（Core Data）
+- 实现 CRUD 操作
+- 处理数据迁移（轻量迁移 / 手动迁移）
+- 使用 @Query 获取数据（SwiftData）/ NSFetchedResultsController（Core Data）
+- 支持后台上下文操作
+- 添加数据验证逻辑
+```
+
+### Xcode 编译错误诊断 Prompt 模板
+
+```
+我在 Xcode 中遇到以下编译错误，请帮我分析和修复：
+
+错误信息：
+[粘贴完整的编译错误]
+
+相关代码：
+[粘贴相关代码]
+
+项目信息：
+- Xcode 版本：[版本号]
+- iOS 部署目标：[版本号]
+- Swift 版本：[版本号]
+
+请提供：
+1. 错误原因分析
+2. 修复方案（含代码）
+3. 如何避免类似错误
+```
+
+### 网络请求 Prompt 模板
+
+```
+请用 Swift 实现以下网络请求功能：
+
+[描述网络需求]
+
+要求：
+- 使用 URLSession + async/await
+- 实现请求重试（指数退避）
+- 添加请求超时处理
+- 使用 Codable 解析响应
+- 实现离线缓存策略
+- 处理 HTTP 状态码错误
+- 添加网络可达性检测
+```
+
+### 动画与手势 Prompt 模板
+
+```
+请用 SwiftUI 实现以下动画/手势效果：
+
+[描述动画效果]
+
+要求：
+- 使用 withAnimation 控制动画
+- 支持无障碍（减少动画偏好设置）
+- 使用 SwiftUI 手势（DragGesture / LongPressGesture 等）
+- 确保动画流畅（60fps）
+- 提供动画参数的可配置性
+```
+
+### Prompt 模板使用技巧
+
+| 技巧 | 说明 | 示例 |
+|------|------|------|
+| **指定 iOS 版本** | 明确目标 iOS 版本，避免使用过时 API | "使用 iOS 17+ API" |
+| **指定框架偏好** | 明确使用 SwiftData 还是 Core Data | "使用 SwiftData" |
+| **提及审核要求** | 避免生成审核不通过的代码 | "遵循 App Store 审核指南" |
+| **要求无障碍** | 确保生成的代码支持 VoiceOver | "添加 accessibilityLabel" |
+| **要求性能优化** | 避免生成性能低下的代码 | "使用 LazyVStack 优化" |
+| **指定并发模型** | 明确使用 async/await 还是 Combine | "使用 async/await" |
+
+💡 **提示**：这些模板是起点，根据你的具体需求调整"要求"部分。越是具体的需求描述，AI 生成的代码质量越高。
+
+---
+
 ## 小结
 
 本章我们学习了 AI 辅助开发的最佳实践：

@@ -865,6 +865,140 @@ Xcode Cloud 按计算时长计费：
 
 ---
 
+## AI + CI/CD：让自动化更智能
+
+### 为什么要在 CI/CD 中集成 AI
+
+传统的 CI/CD 流水线是"规则驱动"的——构建失败就报错，测试不通过就阻止合并。但 AI 可以让 CI/CD 变得更"聪明"：
+
+| 传统 CI/CD | AI 增强 CI/CD |
+|-----------|--------------|
+| 构建失败 → 人工看日志 | 构建失败 → AI 自动分析原因 |
+| 代码审查 → 人工逐行看 | 代码审查 → AI 先审 + 人工复审 |
+| 变更日志 → 手动编写 | 变更日志 → AI 自动生成 |
+| 测试失败 → 人工排查 | 测试失败 → AI 定位根因 |
+
+### Xcode Cloud 中集成 AI 代码审查
+
+#### 方案一：GitHub Actions + AI 审查
+
+在 Xcode Cloud 构建成功后，通过 GitHub Actions 触发 AI 代码审查：
+
+```yaml
+name: AI Code Review
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  ai-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: AI Review
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          DIFF=$(git diff origin/main...HEAD)
+          curl -s https://api.anthropic.com/v1/messages \
+            -H "x-api-key: $ANTHROPIC_API_KEY" \
+            -H "content-type: application/json" \
+            -H "anthropic-version: 2023-06-01" \
+            -d "{
+              \"model\": \"claude-sonnet-4-20250514\",
+              \"max_tokens\": 4096,
+              \"messages\": [{
+                \"role\": \"user\",
+                \"content\": \"请审查以下代码变更，关注：1) 潜在 Bug 2) 性能问题 3) 安全风险 4) 代码风格 5) iOS 最佳实践\\n\\n\" + \"$DIFF\"
+              }]
+            }" > review_result.json
+```
+
+#### 方案二：使用 Claude Code CI 脚本
+
+在 Xcode Cloud 的 `ci_scripts/ci_post_xcodebuild.sh` 中集成 AI 分析：
+
+```bash
+#!/bin/sh
+
+if [ $CI_RESULT = "failure" ]; then
+  echo "构建失败，使用 AI 分析错误日志..."
+  
+  ERROR_LOG=$(cat $CI_LOGS_DIR/*.log 2>/dev/null || echo "无法读取日志")
+  
+  ANALYSIS=$(curl -s https://api.anthropic.com/v1/messages \
+    -H "x-api-key: $ANTHROPIC_API_KEY" \
+    -H "content-type: application/json" \
+    -H "anthropic-version: 2023-06-01" \
+    -d "{
+      \"model\": \"claude-sonnet-4-20250514\",
+      \"max_tokens\": 2048,
+      \"messages\": [{
+        \"role\": \"user\",
+        \"content\": \"分析以下 Xcode 构建错误，给出修复建议：\\n\\n$ERROR_LOG\"
+      }]
+    }")
+  
+  echo "AI 分析结果："
+  echo "$ANALYSIS"
+fi
+```
+
+### AI 自动分析构建失败日志
+
+当 Xcode Cloud 构建失败时，AI 可以快速定位问题：
+
+| 错误类型 | AI 分析能力 | 示例 |
+|---------|-----------|------|
+| 编译错误 | 精准定位错误行和原因 | "第 42 行类型不匹配，期望 String 但得到 Int?" |
+| 链接错误 | 识别缺失框架和符号 | "缺少 UIKit 框架链接，请在 Build Phases 中添加" |
+| 签名错误 | 诊断证书和配置问题 | "Provisioning Profile 过期，需要更新" |
+| 测试失败 | 分析断言失败原因 | "XCTest 断言失败：期望 5 但得到 3，可能是 off-by-one 错误" |
+| 资源错误 | 识别缺失或损坏的资源 | "Assets.xcassets 中缺少 AppIcon" |
+
+### AI 生成变更日志（Changelog）
+
+利用 AI 分析 Git 提交历史，自动生成结构化的变更日志：
+
+```bash
+#!/bin/sh
+
+PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+COMMITS=$(git log ${PREVIOUS_TAG}..HEAD --pretty=format:"- %s" 2>/dev/null)
+
+CHANGELOG=$(curl -s https://api.anthropic.com/v1/messages \
+  -H "x-api-key: $ANTHROPIC_API_KEY" \
+  -H "content-type: application/json" \
+  -H "anthropic-version: 2023-06-01" \
+  -d "{
+    \"model\": \"claude-sonnet-4-20250514\",
+    \"max_tokens\": 2048,
+    \"messages\": [{
+      \"role\": \"user\",
+      \"content\": \"根据以下 Git 提交记录，生成一份结构化的变更日志（中文），分为：新功能、改进、修复、已知问题\\n\\n$COMMITS\"
+    }]
+  }")
+
+echo "$CHANGELOG" > CHANGELOG.md
+```
+
+### AI + CI/CD 最佳实践
+
+| 实践 | 说明 |
+|------|------|
+| **AI 审查不替代人工** | AI 审查是辅助，关键代码仍需人工审查 |
+| **保护 API Key** | 使用 CI 环境变量存储 API Key，不要硬编码 |
+| **设置 Token 预算** | 限制 AI 调用的 Token 数量，控制成本 |
+| **缓存 AI 结果** | 相同代码变更不重复调用 AI |
+| **渐进式集成** | 先在非关键分支测试 AI CI/CD，再推广到主分支 |
+| **监控误报率** | 跟踪 AI 审查的误报率，持续优化 Prompt |
+
+⚠️ **警告**：AI 代码审查可能产生误报。不要让 AI 审查结果自动阻止 PR 合并，应作为参考信息供开发者决策。
+
+---
+
 ## 小结
 
 | 知识点 | 关键内容 |

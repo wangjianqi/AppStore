@@ -971,6 +971,151 @@ npm install -g @modelcontextprotocol/server-filesystem
 
 ---
 
+## 7. MCP Server 开发实战
+
+### 为什么要开发自定义 MCP Server
+
+虽然社区已有大量 MCP Server，但 iOS 开发者经常需要连接自己的工具和服务：
+
+| 场景 | 说明 |
+|------|------|
+| **内部 API** | 公司内部 API 文档查询和调试 |
+| **设计系统** | 读取团队的设计 Token 和组件库 |
+| **CI/CD** | 查询构建状态、触发部署 |
+| **数据库** | 查询测试数据库数据 |
+| **自定义工具** | 团队特有的开发工具集成 |
+
+### MCP Server 开发技术选型
+
+| 语言/框架 | 适合场景 | 优势 | 劣势 |
+|----------|---------|------|------|
+| **TypeScript + @modelcontextprotocol/sdk** | 通用场景、Web 服务集成 | 官方 SDK、生态最成熟 | 需要 Node.js 运行时 |
+| **Python + mcp** | 数据处理、AI/ML 集成 | 简洁、AI 生态丰富 | 性能较低 |
+| **Swift + MCP SDK** | Apple 生态深度集成 | 原生体验、Xcode 集成 | 生态较新 |
+
+### 用 TypeScript 创建 MCP Server
+
+#### 安装依赖
+
+```bash
+mkdir my-mcp-server && cd my-mcp-server
+npm init -y
+npm install @modelcontextprotocol/sdk zod
+npm install -D typescript @types/node
+```
+
+#### 最简 MCP Server 示例
+
+```typescript
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from "zod";
+
+const server = new McpServer({
+  name: "ios-dev-helper",
+  version: "1.0.0",
+});
+
+server.tool(
+  "check-app-store-status",
+  "检查 App Store 审核状态",
+  { appId: z.string().describe("App ID") },
+  async ({ appId }) => {
+    const status = await fetchAppStoreStatus(appId);
+    return {
+      content: [{ type: "text", text: `App ${appId} 当前状态: ${status}` }],
+    };
+  }
+);
+
+server.tool(
+  "search-api-docs",
+  "搜索 Apple API 文档",
+  { query: z.string().describe("搜索关键词") },
+  async ({ query }) => {
+    const results = await searchAppleDocs(query);
+    return {
+      content: [{ type: "text", text: JSON.stringify(results, null, 2) }],
+    };
+  }
+);
+
+const transport = new StdioServerTransport();
+await server.connect(transport);
+```
+
+#### 配置到 Claude Desktop
+
+```json
+{
+  "mcpServers": {
+    "ios-dev-helper": {
+      "command": "node",
+      "args": ["/path/to/my-mcp-server/index.js"]
+    }
+  }
+}
+```
+
+### MCP Server 开发最佳实践
+
+| 实践 | 说明 |
+|------|------|
+| **清晰的 Tool 描述** | 描述越清晰，AI 调用越准确 |
+| **输入验证** | 使用 Zod Schema 验证所有输入参数 |
+| **错误处理** | 返回有意义的错误信息，帮助 AI 自我修正 |
+| **幂等设计** | 同一操作多次调用结果一致 |
+| **安全边界** | 限制可访问的文件范围和操作权限 |
+| **日志记录** | 记录所有工具调用，便于调试 |
+
+---
+
+## 8. iOS 开发常用 MCP Server 清单
+
+### 官方与社区推荐
+
+| MCP Server | 功能 | 安装方式 | 推荐度 |
+|------------|------|---------|--------|
+| **@anthropic/mcp-server-filesystem** | 文件系统读写 | npx 安装 | ⭐⭐⭐⭐⭐ |
+| **@anthropic/mcp-server-github** | GitHub 操作 | npx 安装 | ⭐⭐⭐⭐⭐ |
+| **@anthropic/mcp-server-fetch** | 网页抓取 | npx 安装 | ⭐⭐⭐⭐ |
+| **figma-mcp** | Figma 设计稿读取 | npx 安装 | ⭐⭐⭐⭐ |
+| **context7** | 第三方库文档查询 | npx 安装 | ⭐⭐⭐⭐ |
+| **xcode-mcp** | Xcode 项目操作 | npx 安装 | ⭐⭐⭐ |
+| **swift-docs-mcp** | Apple 文档搜索 | npx 安装 | ⭐⭐⭐ |
+| **simctl-mcp** | iOS 模拟器控制 | npx 安装 | ⭐⭐⭐ |
+
+### iOS 开发者推荐配置
+
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-server-filesystem", "/path/to/your/ios/project"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-server-github"],
+      "env": { "GITHUB_TOKEN": "your-token" }
+    },
+    "figma": {
+      "command": "npx",
+      "args": ["-y", "figma-mcp"],
+      "env": { "FIGMA_TOKEN": "your-token" }
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@context7/mcp-server"]
+    }
+  }
+}
+```
+
+💡 **提示**：MCP Server 生态正在快速发展，关注 [MCP Server 仓库](https://github.com/modelcontextprotocol/servers) 获取最新列表。
+
+---
+
 ## 小结
 
 | 内容 | 关键要点 |
@@ -981,6 +1126,8 @@ npm install -g @modelcontextprotocol/server-filesystem
 | **配置方式** | 在 AI 应用的 JSON 配置文件中声明 MCP Server |
 | **常用 Server** | 文件系统、GitHub、Figma、Context7——开箱即用 |
 | **自定义开发** | 用 TypeScript 或 Python，注册 Tool + 绑定 Stdio 传输 |
+| **开发实战** | 技术选型（TS/Python/Swift），清晰的 Tool 描述 + 输入验证 + 幂等设计 |
+| **Server 清单** | 文件系统、GitHub、Figma、Context7 为必装；xcode-mcp、simctl-mcp 按需选用 |
 | **安全** | 不暴露 Token、不连生产库、限制文件系统范围 |
 | **性能** | 按需配置，不要一次装太多 |
 

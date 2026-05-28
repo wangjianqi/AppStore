@@ -452,3 +452,130 @@ Trae 是字节跳动推出的 AI 编程 IDE，同样基于 VS Code，支持多�
 - 🎨 **喜欢图形界面** → Cursor 或 Trae
 - 🆓 **预算有限** → Trae（免费额度较多）
 - 💪 **追求最强** → Cursor + Claude Code 组合使用
+
+---
+
+## 国内 AI 编程工具速查
+
+> 国内 AI 编程工具发展迅速，以下是目前主流的国产 AI 编程工具，适合国内开发者使用。
+
+| 工具 | 出品方 | 类型 | IDE 支持 | Swift 支持 | 价格 | 官网 |
+|------|--------|------|---------|-----------|------|------|
+| 通义灵码 | 阿里云 | 插件 | VS Code / JetBrains | ⭐⭐⭐ | 免费 | tongyi.aliyun.com/lingma |
+| CodeGeeX | 智谱 AI | 插件 | VS Code / JetBrains / Vim | ⭐⭐ | 免费 | codegeex.cn |
+| Baidu Comate | 百度 | 插件 | VS Code / JetBrains | ⭐⭐ | 免费 | comate.baidu.com |
+| 豆包 MarsCode | 字节跳动 | IDE + 插件 | 独立 IDE / VS Code | ⭐⭐⭐ | 免费 | marscode.com |
+
+**选择建议**：
+
+- 🔌 **已有 VS Code / JetBrains** → 通义灵码或 CodeGeeX（插件形式，无缝集成）
+- 🆓 **预算有限** → 全部免费，按 Swift 支持度优先选通义灵码或豆包 MarsCode
+- 🖥️ **想要独立 IDE** → 豆包 MarsCode（提供独立 IDE 体验）
+- 🇨🇳 **国内网络环境** → 以上工具均无需翻墙，访问速度快
+
+---
+
+## 国产大模型 API 速查
+
+> 在 iOS App 中集成 AI 功能时，面向国内用户应优先使用国产大模型 API，避免数据出境合规风险。以下 API 均兼容 OpenAI 接口格式，迁移成本低。
+
+| 模型 | 提供商 | API 格式 | 上下文长度 | 价格（输入/输出） | 免费额度 |
+|------|--------|---------|-----------|-----------------|---------|
+| 通义千问 qwen-plus | 阿里云 | OpenAI 兼容 | 128K | ¥0.8/百万token / ¥2/百万token | 100万token |
+| DeepSeek Chat | DeepSeek | OpenAI 兼容 | 64K | ¥1/百万token / ¥2/百万token | 500万token |
+| GLM-4 | 智谱 AI | OpenAI 兼容 | 128K | ¥15/百万token / ¥15/百万token | 有限 |
+| Moonshot v1 | 月之暗面 | OpenAI 兼容 | 8K-32K | ¥12/百万token / ¥12/百万token | 有限 |
+| 星火 4.0 Ultra | 讯飞 | OpenAI 兼容 | 8K | 按量计费 | 有限 |
+
+**接入要点**：
+
+1. **OpenAI 兼容格式**：以上模型均支持 OpenAI Chat Completions API 格式，只需更换 `base_url` 和 `api_key` 即可切换
+2. **Swift 接入示例**：
+
+```swift
+// 通用 OpenAI 兼容请求封装
+struct LLMConfig {
+    var baseURL: String
+    var apiKey: String
+    var model: String
+
+    static let qwen = LLMConfig(
+        baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1",
+        apiKey: "your-api-key",
+        model: "qwen-plus"
+    )
+
+    static let deepseek = LLMConfig(
+        baseURL: "https://api.deepseek.com/v1",
+        apiKey: "your-api-key",
+        model: "deepseek-chat"
+    )
+}
+```
+
+3. **成本优化**：简单任务用 DeepSeek / 通义千问（便宜），复杂推理用 GLM-4 / Moonshot
+
+---
+
+## iOS App 集成 AI 功能 Prompt 模板
+
+> 以下 Prompt 模板专门针对 iOS App 集成 AI 功能的场景，可直接复制使用。
+
+### 生成 LLMService 网络封装的 Prompt
+
+```
+请使用 Swift 5.9+ 为 iOS App 创建一个 LLMService 网络请求封装类。
+
+要求：
+- 使用 async/await 异步模式
+- 支持 OpenAI 兼容 API 格式（可切换不同国产模型）
+- 支持流式输出（SSE），使用 URLSession.bytes 逐行读取
+- 支持非流式输出
+- API Key 从 Keychain 读取，不硬编码
+- 请求超时设置 60 秒
+- 错误处理使用自定义 LLMError 枚举
+- 使用 MVVM 架构，Service 层独立于 ViewModel
+- 代码添加 /// 格式文档注释
+
+参考接口格式：
+POST /v1/chat/completions
+Headers: Authorization: Bearer <api_key>
+Body: { "model": "...", "messages": [...], "stream": true/false }
+```
+
+---
+
+### 生成聊天界面的 Prompt
+
+```
+请使用 SwiftUI + iOS 17+ 创建一个 AI 聊天界面。
+
+要求：
+- 使用 MVVM 架构，ViewModel 使用 @Observable 宏
+- 消息列表使用 LazyVStack + ScrollView + ScrollViewReader
+- 支持用户消息和 AI 消息两种气泡样式
+- AI 消息支持逐字打字机效果（流式输出时逐步显示）
+- 底部输入框固定，支持多行输入（最大 4 行）
+- 发送按钮在输入为空时禁用
+- AI 正在回复时显示加载指示器
+- 支持复制 AI 回复内容（长按菜单）
+- 支持深色模式
+- 消息模型包含 id、role（user/assistant）、content、timestamp
+```
+
+---
+
+### 生成 AI 功能合规检查清单的 Prompt
+
+```
+请为 iOS App 集成 AI 功能生成一份合规检查清单，涵盖以下维度：
+
+1. 数据安全：API Key 存储、用户数据传输加密、本地数据保护
+2. 隐私合规：隐私政策更新、用户数据收集声明、数据出境评估
+3. 内容安全：AI 生成内容标识、敏感词过滤、内容审核机制
+4. 算法备案：是否需要算法备案、备案流程、备案信息展示
+5. App Store 审核：AI 功能描述、内容审核机制说明、年龄分级
+6. 用户体验：AI 回复免责声明、错误提示、离线降级方案
+
+每个维度列出具体的检查项，用 ✅ / ❌ 标记格式，方便逐项核对。
+```
