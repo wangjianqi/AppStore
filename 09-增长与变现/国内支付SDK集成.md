@@ -678,7 +678,7 @@ POST
 /v3/pay/transactions/h5
 1559156665
 5K8264ILTKCH16CQ2502SI8ZNMTM67VS
-{"mch_id":"1230000109","out_trade_no":"201503192101","description":"Image形象店-深圳腾大校区-朱老师","amount":{"total":1},"notify_url":"https://www.weixin.qq.com/wxpay/pay.php"}
+{"mch_id":"YOUR_MCH_ID","out_trade_no":"201503192101","description":"Image形象店-深圳腾大校区-朱老师","amount":{"total":1},"notify_url":"https://www.weixin.qq.com/wxpay/pay.php"}
 ```
 
 **第二步：生成签名**
