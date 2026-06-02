@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**AppStore-Guide** is a documentation-only tutorial repository (no buildable code). It contains 10 sections (184 chapters + 12 appendices) guiding developers from zero to publishing an iOS app on the App Store, with an emphasis on AI-driven development workflows.
+**AppStore-Guide** is a documentation-only tutorial repository (no buildable code). It contains 10 sections (185 chapters + 12 appendices) guiding developers from zero to publishing an iOS app on the App Store, with an emphasis on AI-driven development workflows.
 
 The content is written in Chinese and targets mainland China developers specifically (ICP filing, App Store review nuances, etc.).
 
